@@ -49,6 +49,28 @@ use Kunena\Forum\Libraries\User\KunenaUserHelper;
  */
 class KunenaAnnouncement extends KunenaDatabaseObject
 {
+    public $typeAlias;
+    
+    public $title;
+    
+    public $created_by;
+    
+    public $sdescription;
+    
+    public $description;
+    
+    public $created;
+    
+    public $publish_up;
+    
+    public $publish_down;
+    
+    public $published;
+    
+    public $ordering;
+    
+    public $showdate;
+
     /**
      * @var     array
      * @since   Kunena 6.0
