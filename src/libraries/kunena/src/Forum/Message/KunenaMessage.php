@@ -1450,6 +1450,7 @@ class KunenaMessage extends KunenaDatabaseObject
         $attachs->totalNonProtected    = 0;
         $attachs->readable = 0;
         $attachs->totalProtected = 0;
+        $attachs->totalPrivate = 0; 
 
         foreach ($attachments as $attach) {
             if ($attach->inline) {
