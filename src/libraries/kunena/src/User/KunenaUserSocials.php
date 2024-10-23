@@ -232,7 +232,15 @@ class KunenaUserSocials
      * @var    string  Bluesky_app
      * @since  Kunena 6.4.0
      */
-    public $bluesky_app = '';    
+    public $bluesky_app = ''; 
+    
+    public $messagesPerPage;
+    
+    public $threadsPerPage;
+    
+    public $messagesPerPageSearch;
+    
+    public $plugins;
 
     /**
      * @return  KunenaUserSocials|mixed
@@ -279,13 +287,13 @@ class KunenaUserSocials
         $db->setQuery($query);
 
         try {
-            $config = $db->loadAssoc();
+            $socials = $db->loadAssoc();
         } catch (ExecutionFailureException $e) {
             KunenaError::displayDatabaseError($e);
         }
 
-        if ($config) {
-            $params = json_decode($config['params']);
+        if ($socials) {
+            $params = json_decode($socials['socials']);
             $this->bind($params);
         }
 
@@ -302,7 +310,7 @@ class KunenaUserSocials
      *
      * @return  void
      *
-     * @since   Kunena 6.0
+     * @since   Kunena 6.4
      */
     public function bind($properties): void
     {
@@ -314,7 +322,7 @@ class KunenaUserSocials
      *
      * @return  void
      *
-     * @since   Kunena 6.0
+     * @since   Kunena 6.4
      */
     public function check(): void
     {
@@ -358,7 +366,7 @@ class KunenaUserSocials
     /**
      * @return  void
      *
-     * @since   Kunena 6.0
+     * @since   Kunena 6.4
      */
     public function reset(): void
     {
@@ -373,7 +381,7 @@ class KunenaUserSocials
      *
      * @internal
      *
-     * @since   Kunena 6.0
+     * @since   Kunena 6.4
      */
     public function getPlugin(string $name): Registry
     {
@@ -386,7 +394,7 @@ class KunenaUserSocials
      * @return  string
      *
      * @throws  Exception
-     * @since   Kunena 6.0
+     * @since   Kunena 6.4
      */
     public function getEmail(): string
     {
