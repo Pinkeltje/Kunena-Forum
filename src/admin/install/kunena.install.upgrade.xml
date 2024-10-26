@@ -317,7 +317,7 @@
                  versionname="Internal">            
             <query mode="silenterror">ALTER TABLE `#__kunena_smileys` DROP `greylocation`;</query>
         </version>
-        <version version="6.4.0-DEV"
+        <version version="6.4.0-BETA1-DEV"
                  versiondate="2024-10-12"
                  versionname="Internal">
             <query mode="silenterror">
@@ -332,6 +332,7 @@
                 DROP IF EXISTS `delicious`,
                 DROP IF EXISTS `bsky_app`;
             </query>
+            <phpfile name="6.4.0-2024-10-21_update_configuration"/>
         </version>
         <version version="@kunenaversion@"
                  versiondate="@kunenaversiondate@"
