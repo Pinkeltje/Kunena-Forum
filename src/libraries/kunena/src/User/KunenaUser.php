@@ -77,7 +77,6 @@ use stdClass;
  * @property    int     $canSubscribe
  * @property    int     $userListtime
  * @property    int     $thankyou
- * @property    int     $socialshare
  * From Joomla users table
  * @property    string  $name
  * @property    string  $username
@@ -250,12 +249,6 @@ class KunenaUser
      * @since   Kunena 6.0
      */
     public $thankyou;
-
-    /**
-     * @var     integer
-     * @since   Kunena 6.0
-     */
-    public $socialshare;
 
     /**
      * From Joomla user table
@@ -1070,7 +1063,6 @@ class KunenaUser
             'canSubscribe' => $this->canSubscribe,
             'userListtime' => $this->userListtime,
             'thankyou'     => $this->thankyou,
-            'socialshare'  => $this->socialshare,
         ];
 
         $table->bind($properties);

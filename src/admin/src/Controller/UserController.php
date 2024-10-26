@@ -145,7 +145,6 @@ class UserController extends FormController
             $user->showOnline   = $this->app->input->getInt('showonline');
             $user->canSubscribe = $this->app->input->getInt('cansubscribe');
             $user->userListtime = $this->app->input->getInt('userlisttime');
-            $user->socialshare  = $this->app->input->getInt('socialshare');
             $user->view         = $newView;
             $user->ordering     = $newOrder;
             $user->rank         = $newRank;

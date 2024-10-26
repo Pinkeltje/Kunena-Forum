@@ -459,7 +459,6 @@ CREATE TABLE IF NOT EXISTS `#__kunena_users`
     `thankyou`         int(11)      NULL     default '0',
     `ip`               varchar(125) NULL,
     `socials`          text			NULL,		
-    `socialshare`      tinyint(1)   NOT NULL default '1',
     PRIMARY KEY (userid),
     KEY `group_id` (group_id),
     KEY `posts` (posts),

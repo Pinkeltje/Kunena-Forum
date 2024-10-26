@@ -270,14 +270,6 @@ class KunenaUsers extends KunenaTable
      * social
      *
      * @var     integer
-     * @since   Kunena 6.0
-     */
-    public $socialshare = null;
-    
-    /**
-     * social
-     *
-     * @var     integer
      * @since   Kunena 6.4
      */
     public $socials = null;

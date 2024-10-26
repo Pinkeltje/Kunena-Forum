@@ -275,7 +275,7 @@
                  versionname="Internal">
             <phpfile name="6.3.4-2024-08-01_update_configuration_to_x"/>
         </version>
-        <version version="6.4.0-DEV"
+        <version version="6.4.0-DEV_2024-05-25"
                  versiondate="2024-05-25"
                  versionname="Internal">
             <query mode="silenterror">
@@ -312,7 +312,7 @@
                 DROP IF EXISTS `bluesky_app`;
             </query>
         </version>
-		<version version="6.4.0-DEV"
+		<version version="6.4.0-DEV_2024-09-11"
                  versiondate="2024-09-11"
                  versionname="Internal">            
             <query mode="silenterror">ALTER TABLE `#__kunena_smileys` DROP `greylocation`;</query>
@@ -333,6 +333,7 @@
                 DROP IF EXISTS `bsky_app`;
             </query>
             <phpfile name="6.4.0-2024-10-21_update_configuration"/>
+            <query mode="silenterror">ALTER TABLE `#__kunena_user` DROP `socialshare`;</query>
         </version>
         <version version="@kunenaversion@"
                  versiondate="@kunenaversiondate@"
