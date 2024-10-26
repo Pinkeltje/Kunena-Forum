@@ -333,7 +333,7 @@
                 DROP IF EXISTS `bsky_app`;
             </query>
             <phpfile name="6.4.0-2024-10-21_update_configuration"/>
-            <query mode="silenterror">ALTER TABLE `#__kunena_user` DROP `socialshare`;</query>
+            <query mode="silenterror">ALTER TABLE `#__kunena_users` DROP `socialshare`;</query>
         </version>
         <version version="@kunenaversion@"
                  versiondate="@kunenaversiondate@"
