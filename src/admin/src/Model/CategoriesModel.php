@@ -51,8 +51,8 @@ class CategoriesModel extends KunenaModel
      * @var     string
      * @since   Kunena 6.0
      */
-    public $context;
-
+    public $context;    
+    
     /**
      * @var     KunenaCategory[]
      * @since   Kunena 6.0
@@ -470,22 +470,8 @@ class CategoriesModel extends KunenaModel
 
             $admin = 0;
             $acl   = KunenaAccess::getInstance();
-
+            
             foreach ($this->internalAdminCategories as $category) {
-                // TODO: Following is needed for J!2.5 only:
-                $parent   = $category->getParent();
-                $siblings = array_keys(KunenaCategoryHelper::getCategoryTree($category->parentid));
-
-                if ($parent) {
-                    $category->up      = $this->me->isAdmin($parent) && reset($siblings) != $category->id;
-                    $category->down    = $this->me->isAdmin($parent) && end($siblings) != $category->id;
-                    $category->reOrder = $this->me->isAdmin($parent);
-                } else {
-                    $category->up      = $this->me->isAdmin($category) && reset($siblings) != $category->id;
-                    $category->down    = $this->me->isAdmin($category) && end($siblings) != $category->id;
-                    $category->reOrder = $this->me->isAdmin($category);
-                }
-
                 // Get ACL groups for the category.
                 $access               = $acl->getCategoryAccess($category);
                 $category->accessname = [];
@@ -501,12 +487,9 @@ class CategoriesModel extends KunenaModel
                 $category->accessname = implode(' / ', $category->accessname);
 
                 // Checkout?
-                if ($this->me->isAdmin($category) && $category->isCheckedOut(0)) {
-                    $category->editor = KunenaFactory::getUser($category->checked_out)->getName();
-                } else {
+                if (!$this->me->isAdmin($category) && !$category->isCheckedOut(0)) {
                     $category->checked_out = 0;
-                    $category->editor      = '';
-                }
+                } 
 
                 $admin += $this->me->isAdmin($category);
             }
