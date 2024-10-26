@@ -20,11 +20,9 @@ use Kunena\Forum\Libraries\Layout\KunenaLayout;
 /**
  * KunenaLayoutUserItem
  *
- * @since   Kunena 6.1
+ * @since   Kunena 6.4
  */
-class UserItemSocial extends KunenaLayout
+class UserItemSocials extends KunenaLayout
 {
-    public $profile;
-
     public $socials;
 }

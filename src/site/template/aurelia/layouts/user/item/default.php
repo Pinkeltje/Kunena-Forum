@@ -55,7 +55,8 @@ echo $this->subLayout('User/Item/Summary')
     ->set('points', $this->points)
     ->set('medals', $this->medals)
     ->set('avatar', $this->avatar)
-    ->set('banInfo', $this->banInfo);
+    ->set('banInfo', $this->banInfo)
+    ->set('socials', $this->socials);
 ?>
 
 <?php echo $this->subLayout('Widget/Module')->set('position', 'kunena_summary'); ?>

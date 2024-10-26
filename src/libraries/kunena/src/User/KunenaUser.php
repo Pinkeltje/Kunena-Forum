@@ -2142,4 +2142,16 @@ class KunenaUser
         
         return true;
     }
+    
+    /**
+     * Get user socials info for the userprofile
+     * 
+     * @throws Exception
+     * @since Kunena 6.4.0 
+     */
+    public function getSocialInfoUserProfile() {
+        $socials = KunenaUserSocials::getInstance();
+        
+        return $socials;        
+    }
 }
