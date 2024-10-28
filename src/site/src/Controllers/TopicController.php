@@ -643,6 +643,10 @@ class TopicController extends KunenaController
 
             return;
         }
+        
+        // Need to do to the replacement
+        $fields['message'] = preg_replace('~"",""~', '"", ""', $fields['message']);
+
 
         if (!$this->id) {
             // Create topic
