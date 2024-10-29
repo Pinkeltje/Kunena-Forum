@@ -644,7 +644,7 @@ class TopicController extends KunenaController
             return;
         }
         
-        // Need to do to the replacement
+        // Need to do to the replacement in case of VBA code is inserted without the bbcode tags [code][/code]
         $fields['message'] = preg_replace('~"",""~', '"", ""', $fields['message']);
 
 
