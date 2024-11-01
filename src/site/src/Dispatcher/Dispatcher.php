@@ -30,6 +30,7 @@ use Kunena\Forum\Libraries\Forum\KunenaForum;
 use Kunena\Forum\Libraries\Profiler\KunenaProfiler;
 use Kunena\Forum\Libraries\Route\KunenaRoute;
 use Kunena\Forum\Libraries\User\KunenaUserHelper;
+use Kunena\Forum\Libraries\User\KunenaUserSocials;
 
 /**
  * ComponentDispatcher class for com_kunena
@@ -81,6 +82,8 @@ class Dispatcher extends ComponentDispatcher
                 Factory::getApplication()->enqueueMessage(Text::_('COM_KUNENA_ERROR_SESSION_SAVE_FAILED'), 'error');
             }
         }
+        
+        KunenaUserSocials::addSocialsParams();
 
         $app   = Factory::getApplication();
         $input = $app->input;
