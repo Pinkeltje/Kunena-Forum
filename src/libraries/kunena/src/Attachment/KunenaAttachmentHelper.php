@@ -525,7 +525,7 @@ abstract class KunenaAttachmentHelper
         $db->setQuery($query);
 
         try {
-            $results = (array) $db->loadObjectList('id', 'Attachment');
+            $results = (array) $db->loadAssocList('id');
         } catch (ExecutionFailureException $e) {
             KunenaError::displayDatabaseError($e);
 
@@ -536,7 +536,8 @@ abstract class KunenaAttachmentHelper
             return true;
         }
 
-        foreach ($results as $instance) {
+        foreach ($results as $result) {
+            $instance = KunenaAttachment::getInstance($result['id']);
             $instance->exists(false);
             unset($instance);
         }
@@ -544,8 +545,9 @@ abstract class KunenaAttachmentHelper
         $ids = implode(',', array_keys($results));
         unset($results);
         $query = $db->getQuery(true);
-        $query->from($db->quoteName('#__kunena_attachments'))
-            ->where($db->quoteName('id') . 'IN (' . $ids . ')');
+        $query->delete($db->quoteName('#__kunena_attachments'));
+        $query->where($db->quoteName('id') . 'IN (' . $ids . ')');            
+          
         $db->setQuery($query);
 
         try {
