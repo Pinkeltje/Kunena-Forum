@@ -52,6 +52,7 @@ use Kunena\Forum\Libraries\User\KunenaUserHelper;
 use Kunena\Forum\Plugin\Kunena\Kunena\KunenaProfileKunena;
 use RuntimeException;
 use stdClass;
+use Kunena\Forum\Libraries\User\KunenaUserSocials;
 
 /**
  * Kunena User Controller
@@ -587,6 +588,15 @@ class UserController extends KunenaController
 
             $user->signature = $signature;
         }
+ 
+        // Save values entered by user for the social 
+        $socials = KunenaUserSocials::getInstance();
+        
+        foreach($socials as $key => $social) {
+            $social->value = $input->$method->get('social'.$key, '', 'string');
+        }
+        
+        $socials->save();
 
         $user->personalText = $input->$method->get('personalText', '', 'string');
         $birthdate          = $input->$method->get('birthdate', '', 'string');

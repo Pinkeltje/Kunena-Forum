@@ -38,7 +38,7 @@ class UserEditProfile extends KunenaLayout
 
     public $genders;
 
-    public $social;
+    public $socials;
 
     public $birthdate;
 }

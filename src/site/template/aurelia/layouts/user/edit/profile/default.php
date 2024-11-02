@@ -38,8 +38,8 @@ $this->addScript('assets/js/profile.js');
             <td>
             	<input class="form-control hasTooltip" id="social<?php echo $key; ?>" type="text"
                        maxlength="50"
-                       name="social<?php echo $key; ?> value="<?php //echo $this->escape($this->value); ?>"
-                       data-bs-toggle="tooltip" title="<?php //echo Text::_('COM_KUNENA_MYPROFILE_PERSONALTEXT_DESC') ?>"/>    
+                       name="social<?php echo $key; ?>" value="<?php echo $this->escape($social->value); ?>"
+                       data-bs-toggle="tooltip" title="<?php echo Text::_($social->title . '_DESC') ?>"/>    
             </td>
     	</tr>
     <?php endforeach; ?>
