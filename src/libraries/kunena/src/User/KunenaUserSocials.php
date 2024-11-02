@@ -233,14 +233,6 @@ class KunenaUserSocials
      * @since  Kunena 6.4.0
      */
     public $bluesky_app = ''; 
-    
-    public $messagesPerPage;
-    
-    public $threadsPerPage;
-    
-    public $messagesPerPageSearch;
-    
-    public $plugins;
 
     /**
      * @return  KunenaUserSocials|mixed
@@ -257,14 +249,14 @@ class KunenaUserSocials
             $cache = Factory::getContainer()
                 ->get(CacheControllerFactoryInterface::class)
                 ->createCacheController('output', $options);
-            $instance = $cache->get('configuration', 'com_kunena');
+            $instance = $cache->get('usersocials', 'com_kunena');
 
             if (!$instance) {
                 $instance = new KunenaUserSocials();
                 $instance->load();
             }
 
-            $cache->store($instance, 'configuration', 'com_kunena');
+            $cache->store($instance, 'usersocials', 'com_kunena');
         }
 
         return $instance;
@@ -291,7 +283,7 @@ class KunenaUserSocials
         } catch (ExecutionFailureException $e) {
             KunenaError::displayDatabaseError($e);
         }
-
+        
         if ($socials) {
             $params = json_decode($socials['socials']);
             $this->bind($params);
@@ -299,10 +291,6 @@ class KunenaUserSocials
 
         // Perform custom validation of config data before we let anybody access it.
         $this->check();
-
-        $plugins = [];
-        Factory::getApplication()->triggerEvent('onKunenaGetConfiguration', ['kunena.configuration', &$plugins]);
-        $this->plugins = [];
     }
 
     /**
@@ -327,11 +315,6 @@ class KunenaUserSocials
     public function check(): void
     {
         // Add anything that requires validation
-
-        // Need to have at least one per page of these
-        $this->messagesPerPage       = max($this->messagesPerPage, 1);
-        $this->messagesPerPageSearch = max($this->messagesPerPageSearch, 1);
-        $this->threadsPerPage        = max($this->threadsPerPage, 1);
     }
 
     /**
@@ -457,7 +440,182 @@ class KunenaUserSocials
             $query = $db->createQuery();
 
             $fields = array(
-                $db->quoteName('socials') . ' = ' . $db->quote("socials => [\n 'x_social' => ['url' => 'https:\/\/x.com\/##VALUE##', 'title' => Text::_('COM_KUNENA_MYPROFILE_X_SOCIAL'), 'nourl' => '0'],\n 'facebook' => ['url' => 'https:\/\/www.facebook.com\/##VALUE##', 'title' => Text::_('COM_KUNENA_MYPROFILE_FACEBOOK'), 'nourl' => '0'],\n 'myspace' => ['url' => 'https:\/\/www.myspace.com\/##VALUE##', 'title' => Text::_('COM_KUNENA_MYPROFILE_MYSPACE'), 'nourl' => '0'],\n 'linkedin' => ['url' => 'https:\/\/www.linkedin.com\/in\/##VALUE##', 'title' => Text::_('COM_KUNENA_MYPROFILE_LINKEDIN'), 'nourl' => '0'],\n 'linkedin_company' => ['url' => 'https:\/\/www.linkedin.com\/company\/##VALUE##', 'title' => Text::_('COM_KUNENA_MYPROFILE_LINKEDIN_COMPANY'), 'nourl' => '0'],\n 'digg' => ['url' => 'https:\/\/www.digg.com\/users\/##VALUE##', 'title' => Text::_('COM_KUNENA_MYPROFILE_DIGG'), 'nourl' => '0'],\n 'skype' => ['url' => 'skype:##VALUE##', 'title' => Text::_('COM_KUNENA_MYPROFILE_SKYPE'), 'nourl' => '0'],\n 'yim' => ['url' => '##VALUE##', 'title' => Text::_('COM_KUNENA_MYPROFILE_YIM'), 'nourl' => '1'],\n 'google' => ['url' => '##VALUE##', 'title' => Text::_('COM_KUNENA_MYPROFILE_GOOGLE'), 'nourl' => '1'],\n 'github' => ['url' => 'https:\/\/www.github.com\/##VALUE##', 'title' => Text::_('COM_KUNENA_MYPROFILE_GITHUB'), 'nourl' => '0'],\n 'microsoft' => ['url' => '##VALUE##', 'title' => Text::_('COM_KUNENA_MYPROFILE_MICROSOFT'), 'nourl' => '1'],\n 'blogspot' => ['url' => 'https:\/\/##VALUE##.blogspot.com\/', 'title' => Text::_('COM_KUNENA_MYPROFILE_BLOGSPOT'), 'nourl' => '0'],\n 'flickr' => ['url' => 'https:\/\/www.flickr.com\/photos\/##VALUE##', 'title' => Text::_('COM_KUNENA_MYPROFILE_FLICKR'), 'nourl' => '0'],\n 'bebo' => ['url' => 'https:\/\/www.bebo.com\/Profile.jsp?MemberId=##VALUE##', 'title' => Text::_('COM_KUNENA_MYPROFILE_BEBO'), 'nourl' => '0'],\n 'instagram' => ['url' => 'https:\/\/www.instagram.com\/##VALUE##\/', 'title' => Text::_('COM_KUNENA_MYPROFILE_INSTAGRAM'), 'nourl' => '0'],\n 'qqsocial' => ['url' => '##VALUE##', 'title' => Text::_('COM_KUNENA_MYPROFILE_QQSOCIAL'), 'nourl' => '1'],\n 'qzone' => ['url' => '##VALUE##', 'title' => Text::_('COM_KUNENA_MYPROFILE_QZONE'), 'nourl' => '1'],\n 'weibo' => ['url' => '##VALUE##', 'title' => Text::_('COM_KUNENA_MYPROFILE_WEIBO'), 'nourl' => '1'],\n 'wechat' => ['url' => '##VALUE##', 'title' => Text::_('COM_KUNENA_MYPROFILE_WECHAT'), 'nourl' => '1'],\n 'vk' => ['url' => 'https:\/\/vk.com\/##VALUE##', 'title' => Text::_('COM_KUNENA_MYPROFILE_VK'), 'nourl' => '0'],\n 'telegram' => ['url' => 'https:\/\/t.me\/##VALUE##', 'title' => Text::_('COM_KUNENA_MYPROFILE_TELEGRAM'), 'nourl' => '0'],\n 'apple' => ['url' => '##VALUE##', 'title' => Text::_('COM_KUNENA_MYPROFILE_APPLE'), 'nourl' => '1'],\n 'vimeo' => ['url' => 'https:\/\/vimeo.com\/user##VALUE##', 'title' => Text::_('COM_KUNENA_MYPROFILE_VIMEO'), 'nourl' => '1'],\n 'whatsapp' => ['url' => '##VALUE##', 'title' => Text::_('COM_KUNENA_MYPROFILE_WHATSAPP'), 'nourl' => '1'],\n 'youtube' => ['url' => 'https:\/\/www.youtube-nocookie.com\/##VALUE##', 'title' => Text::_('COM_KUNENA_MYPROFILE_YOUTUBE'), 'nourl' => '0'],\n 'ok' => ['url' => 'https:\/\/ok.ru\/##VALUE##', 'title' => Text::_('COM_KUNENA_MYPROFILE_OK'), 'nourl' => '0'],\n 'pinterest' => ['url' => 'https:\/\/pinterest.com\/##VALUE##', 'title' => Text::_('COM_KUNENA_MYPROFILE_PINTEREST'), 'nourl' => '0'],\n 'reddit' => ['url' => 'https:\/\/www.reddit.com\/user\/##VALUE##', 'title' => Text::_('COM_KUNENA_MYPROFILE_REDDIT'), 'nourl' => '0'],\n 'bluesky_app' => ['url' => 'https:\/\/bsky.app\/profile\/##VALUE##.bsky.social', 'title' => Text::_('COM_KUNENA_MYPROFILE_BLUESKY_APP'), 'nourl' => '0'],\n ], custom => [];")
+                $db->quoteName('socials') . ' = ' . $db->quote('{
+    "x_social": {
+        "value": "",
+        "url": "https://x.com/##VALUE##",
+        "title": "COM_KUNENA_MYPROFILE_X_SOCIAL",
+        "nourl": 0
+    },
+    "facebook": {
+        "value": "",
+        "url": "https://www.facebook.com/##VALUE##",
+        "title": "COM_KUNENA_MYPROFILE_FACEBOOK",
+        "nourl": 0
+    },
+    "myspace": {
+        "value": "",
+        "url": "https://www.myspace.com/##VALUE##",
+        "title": "COM_KUNENA_MYPROFILE_MYSPACE",
+        "nourl": 0
+    },
+    "linkedin": {
+        "value": "",
+        "url": "https://www.linkedin.com/in/##VALUE##",
+        "title": "COM_KUNENA_MYPROFILE_LINKEDIN",
+        "nourl": 0
+    },
+    "linkedin_company": {
+        "value": "",
+        "url": "https://www.linkedin.com/company/##VALUE##",
+        "title": "COM_KUNENA_MYPROFILE_LINKEDIN",
+        "nourl": 0
+    },
+    "digg": {
+        "value": "",
+        "url": "https://www.digg.com/users/##VALUE##",
+        "title": "COM_KUNENA_MYPROFILE_DIGG",
+        "nourl": 0
+    },
+    "skype": {
+        "value": "",
+        "url": "skype:##VALUE##",
+        "title": "COM_KUNENA_MYPROFILE_SKYPE",
+        "nourl": 0
+    },
+    "yim": {
+        "value": "",
+        "url": "##VALUE##",
+        "title": "COM_KUNENA_MYPROFILE_YIM",
+        "nourl": 1
+    },
+    "google": {
+        "value": "",
+        "url": "##VALUE##",
+        "title": "COM_KUNENA_MYPROFILE_GOOGLE",
+        "nourl": 1
+    },
+    "github": {
+        "value": "",
+        "url": "https://www.github.com/##VALUE##",
+        "title": "COM_KUNENA_MYPROFILE_GITHUB",
+        "nourl": 0
+    },
+    "microsoft": {
+        "value": "",
+        "url": "##VALUE##",
+        "title": "COM_KUNENA_MYPROFILE_MICROSOFT",
+        "nourl": 1
+    },
+    "blogspot": {
+        "value": "",
+        "url": "https://##VALUE##.blogspot.com/",
+        "title": "COM_KUNENA_MYPROFILE_BLOGSPOT",
+        "nourl": 0
+    },
+    "flickr": {
+        "value": "",
+        "url": "https://www.flickr.com/photos/##VALUE##",
+        "title": "COM_KUNENA_MYPROFILE_FLICKR",
+        "nourl": 0
+    },
+    "bebo": {
+        "value": "",
+        "url": "https://www.bebo.com/Profile.jsp?MemberId=##VALUE##",
+        "title": "COM_KUNENA_MYPROFILE_BEBO",
+        "nourl": 0
+    },
+    "instagram": {
+        "value": "",
+        "url": "https://www.instagram.com/##VALUE##/",
+        "title": "COM_KUNENA_MYPROFILE_INSTAGRAM",
+        "nourl": 0
+    },
+    "qqsocial": {
+        "value": "",
+        "url": "##VALUE##",
+        "title": "COM_KUNENA_MYPROFILE_QQSOCIAL",
+        "nourl": 1
+    },
+    "qzone": {
+        "value": "",
+        "url": "##VALUE##",
+        "title": "COM_KUNENA_MYPROFILE_QZONE",
+        "nourl": 1
+    },
+    "weibo": {
+        "value": "",
+        "url": "##VALUE##",
+        "title": "COM_KUNENA_MYPROFILE_WEIBO",
+        "nourl": 1
+    },
+    "wechat": {
+        "value": "",
+        "url": "##VALUE##",
+        "title": "COM_KUNENA_MYPROFILE_WECHAT",
+        "nourl": 1
+    },
+    "vk": {
+        "value": "",
+        "url": "https://vk.com/##VALUE##",
+        "title": "COM_KUNENA_MYPROFILE_VK",
+        "nourl": 0
+    },
+    "telegram": {
+        "value": "",
+        "url": "https://t.me/##VALUE##",
+        "title": "COM_KUNENA_MYPROFILE_TELEGRAM",
+        "nourl": 0
+    },
+    "apple": {
+        "value": "",
+        "url": "##VALUE##",
+        "title": "COM_KUNENA_MYPROFILE_APPLE",
+        "nourl": 1
+    },
+    "vimeo": {
+        "value": "",
+        "url": "https://vimeo.com/##VALUE##",
+        "title": "COM_KUNENA_MYPROFILE_VIMEO",
+        "nourl": 0
+    },
+    "whatsapp": {
+        "value": "",
+        "url": "##VALUE##",
+        "title": "COM_KUNENA_MYPROFILE_WHATSAPP",
+        "nourl": 1
+    },
+    "youtube": {
+        "value": "",
+        "url": "https://www.youtube-nocookie.com/##VALUE##",
+        "title": "COM_KUNENA_MYPROFILE_YOUTUBE",
+        "nourl": 0
+    },
+    "ok": {
+        "value": "",
+        "url": "https://ok.ru/##VALUE##",
+        "title": "COM_KUNENA_MYPROFILE_OK",
+        "nourl": 0
+    },
+    "pinterest": {
+        "value": "",
+        "url": "https://pinterest.com/##VALUE##",
+        "title": "COM_KUNENA_MYPROFILE_PINTEREST",
+        "nourl": 0
+    },
+    "reddit": {
+        "value": "",
+        "url": "https://www.reddit.com/user/##VALUE##",
+        "title": "COM_KUNENA_MYPROFILE_REDDIT",
+        "nourl": 0
+    },
+    "bluesky_app": {
+        "value": "",
+        "url": "https://bsky.app/profile/##VALUE##.bsky.social",
+        "title": "COM_KUNENA_MYPROFILE_BLUESKY_APP",
+        "nourl": 0
+    }
+}')
             );
             
             $conditions = array(

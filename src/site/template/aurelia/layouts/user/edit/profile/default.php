@@ -17,6 +17,7 @@ namespace Kunena\Forum\Site;
 
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
+use Kunena\Forum\Libraries\Config\KunenaConfig;
 
 echo $this->subLayout('Widget/Datepicker');
 $this->addScript('assets/js/profile.js');
@@ -27,6 +28,21 @@ $this->addScript('assets/js/profile.js');
 
 <table class="table table-bordered table-striped table-hover">
     <tbody>
+    <?php foreach($this->socials as $key => $social): ?>
+    	<tr>
+    		<td class="col-md-3">
+                <label for="personalText">
+                    <?php echo Text::_($social->title); ?>
+                </label>
+            </td>
+            <td>
+            	<input class="form-control hasTooltip" id="social<?php echo $key; ?>" type="text"
+                       maxlength="50"
+                       name="social<?php echo $key; ?> value="<?php //echo $this->escape($this->value); ?>"
+                       data-bs-toggle="tooltip" title="<?php //echo Text::_('COM_KUNENA_MYPROFILE_PERSONALTEXT_DESC') ?>"/>    
+            </td>
+    	</tr>
+    <?php endforeach; ?>
     <?php if ($this->config->personal) :
         ?>
         <tr>
