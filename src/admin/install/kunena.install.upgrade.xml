@@ -513,7 +513,9 @@
         "title": "COM_KUNENA_MYPROFILE_BLUESKY_APP",
         "nourl": 0
     }
-}' WHERE socials IS NULL;</query>
+}' WHERE socials IS NULL;
+            </query>
+            <phpfile name="6.4.0-2024-11-02_move_users_socials"/>
         </version>
         <version version="@kunenaversion@"
                  versiondate="@kunenaversiondate@"

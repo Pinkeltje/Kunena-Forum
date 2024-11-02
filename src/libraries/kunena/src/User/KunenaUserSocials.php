@@ -240,7 +240,7 @@ class KunenaUserSocials
      * @throws  Exception
      * @since   Kunena 6.4
      */
-    public static function getInstance(): ?KunenaUserSocials
+    public static function getInstance($id): ?KunenaUserSocials
     {
         static $instance = null;
 
@@ -253,7 +253,7 @@ class KunenaUserSocials
 
             if (!$instance) {
                 $instance = new KunenaUserSocials();
-                $instance->load();
+                $instance->load($id);
             }
 
             $cache->store($instance, 'usersocials', 'com_kunena');
@@ -270,12 +270,13 @@ class KunenaUserSocials
      * @throws  Exception
      * @since   Kunena 6.4
      */
-    public function load(): void
+    public function load($id): void
     {
         $db    = Factory::getContainer()->get('DatabaseDriver');
         $query = $db->createQuery();
         $query->select('socials')
-            ->from($db->quoteName('#__kunena_users'));
+            ->from($db->quoteName('#__kunena_users'))
+            ->where($db->quoteName('userid') . '=' . $id);
         $db->setQuery($query);
 
         try {
