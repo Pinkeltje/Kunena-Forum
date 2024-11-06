@@ -792,8 +792,10 @@ class UserController extends KunenaController
             $user->location     = '';
             $user->gender       = 0;
 
-            foreach ($user->socialButtons() as $social) {
-                $user->$social = '';
+            foreach ($user->socialButtons() as $key => $social) {
+                if (isset($user->$key)) {
+                    $user->$key = '';
+                }                
             }
 
             $user->websitename = '';
