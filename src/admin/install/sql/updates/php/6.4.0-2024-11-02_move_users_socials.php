@@ -28,18 +28,13 @@ function kunena_640_2024_10_21_move_users_socials($parent) {
     $query  = $db->createQuery()
         ->select('*')
         ->from($db->quoteName('#__kunena_users'))
-        ->where($db->quoteName('banned') . '= ' . $db->quote('1000-01-01 00:00:00'))
-        ->extendWhere(
-        'OR',
-        [
-            $db->quoteName('banned') . ' < ' . $db->quote($date->toSql())
-        ]        
+        ->where($db->quoteName('banned') . '= ' . $db->quote('1000-01-01 00:00:00')
     );
     $db->setQuery($query);
     $results = (array) $db->loadObjectList();
     
     foreach($results as $result) {
-        $socials = KunenaUserSocials::getInstance($result->userid);
+        $socials = KunenaUserSocials::getInstance($result->userid, false);
         
         if (isset($result->x_social)) {
             $socials->x_social->value = $result->x_social;
@@ -153,8 +148,8 @@ function kunena_640_2024_10_21_move_users_socials($parent) {
             $socials->reddit->value = $result->reddit;
         }
         
-        if (isset($result->bluesky_app)) {
-            $socials->bluesky_app->value = $result->bluesky_app;
+        if (isset($result->bsky_app)) {
+            $socials->bluesky_app->value = $result->bsky_app;
         }
         
         $socials->save();

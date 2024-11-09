@@ -242,11 +242,11 @@ class KunenaUserSocials
      * @throws  Exception
      * @since   Kunena 6.4
      */
-    public static function getInstance($id = 0): ?KunenaUserSocials
+    public static function getInstance($id = 0, $useCache = true): ?KunenaUserSocials
     {
         static $instance = null;
 
-        if (!$instance) {
+        if (!$instance && $useCache) {
             $options = ['defaultgroup' => 'com_kunena'];
             $cache = Factory::getContainer()
                 ->get(CacheControllerFactoryInterface::class)
@@ -264,6 +264,14 @@ class KunenaUserSocials
             }
 
             $cache->store($instance, 'usersocials', 'com_kunena');
+        } else {
+            $instance = new KunenaUserSocials();
+            
+            if ($id > 0) {
+                $instance->userid = $id;
+            }
+            
+            $instance->load();
         }
 
         return $instance;
