@@ -240,7 +240,7 @@ class KunenaUserSocials
      * @throws  Exception
      * @since   Kunena 6.4
      */
-    public static function getInstance($id): ?KunenaUserSocials
+    public static function getInstance($id = 0): ?KunenaUserSocials
     {
         static $instance = null;
 
