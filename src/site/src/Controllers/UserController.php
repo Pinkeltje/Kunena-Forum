@@ -801,6 +801,18 @@ class UserController extends KunenaController
             $user->websitename = '';
             $user->websiteurl  = '';
             $user->signature   = '';
+            
+            // Empty socials value in the user profile if they are filled
+            $socials = KunenaUserSocials::getInstance($user->userid);
+            
+            foreach ($socials as $key => $social) {                
+                if (isset($social->value)) {
+                    $socials->$key->value = '';
+                } 
+            }
+            
+            $socials->save();
+             
             $user->save();
             $this->app->enqueueMessage(Text::_('COM_KUNENA_MODERATE_DELETED_BAD_PROFILEINFO'), 'success');
         } elseif (!empty($DelSignature)) {

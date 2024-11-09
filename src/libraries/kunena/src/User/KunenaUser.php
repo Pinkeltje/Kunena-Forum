@@ -2142,7 +2142,7 @@ class KunenaUser
      * @since Kunena 6.4.0 
      */
     public function getSocialInfoUserProfile() {
-        $socials = KunenaUserSocials::getInstance();
+        $socials = KunenaUserSocials::getInstance($this->userid);
         
         return $socials;        
     }

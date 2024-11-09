@@ -233,6 +233,8 @@ class KunenaUserSocials
      * @since  Kunena 6.4.0
      */
     public $bluesky_app = ''; 
+    
+    protected $userid = 0;
 
     /**
      * @return  KunenaUserSocials|mixed
@@ -253,7 +255,12 @@ class KunenaUserSocials
 
             if (!$instance) {
                 $instance = new KunenaUserSocials();
-                $instance->load($id);
+                
+                if ($id > 0) {
+                    $instance->userid = $id;
+                }
+                
+                $instance->load();
             }
 
             $cache->store($instance, 'usersocials', 'com_kunena');
@@ -270,13 +277,13 @@ class KunenaUserSocials
      * @throws  Exception
      * @since   Kunena 6.4
      */
-    public function load($id): void
+    public function load(): void
     {
         $db    = Factory::getContainer()->get('DatabaseDriver');
         $query = $db->createQuery();
         $query->select('socials')
             ->from($db->quoteName('#__kunena_users'))
-            ->where($db->quoteName('userid') . '=' . $id);
+            ->where($db->quoteName('userid') . '=' . $this->userid);
         $db->setQuery($query);
 
         try {
@@ -334,8 +341,19 @@ class KunenaUserSocials
         // Get current configuration
         $params = get_object_vars($this);
         unset($params['id']);
+        
+        $fields = array(
+            $db->quoteName('socials') . ' = ' . $db->quote(json_encode($params))
+        );
+        
+        $conditions = array(
+            $db->quoteName('userid') . ' = ' . $this->userid
+        );
+        
+        $query = $db->createQuery()
+            ->update($db->quoteName('#__kunena_users'))->set($fields)->where($conditions);
 
-        $db->setQuery("REPLACE INTO #__kunena_users SET socials={$db->quote(json_encode($params))}");
+        $db->setQuery($query);
 
         try {
             $db->execute();
