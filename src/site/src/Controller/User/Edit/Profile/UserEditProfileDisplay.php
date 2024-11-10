@@ -19,6 +19,7 @@ use Exception;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
 use Kunena\Forum\Site\Controller\User\Edit\UserEditDisplay;
+use Kunena\Forum\Libraries\User\KunenaUserHelper;
 use Kunena\Forum\Libraries\User\KunenaUserSocials;
 
 /**
@@ -67,7 +68,7 @@ class UserEditProfileDisplay extends UserEditDisplay
 
         $this->headerText = Text::_('COM_KUNENA_PROFILE_EDIT_PROFILE_TITLE');
         
-        $this->socials = KunenaUserSocials::getInstance();
+        $this->socials = KunenaUserSocials::getInstance(KunenaUserHelper::getMyself()->userid);
     }
 
     /**

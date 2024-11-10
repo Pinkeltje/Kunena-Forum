@@ -21,9 +21,7 @@ use Kunena\Forum\Libraries\User\KunenaUserSocials;
  * @throws Exception
  * @since Kunena 6.4.0
  */
-function kunena_640_2024_10_21_move_users_socials($parent) {
-    $date = Factory::getDate();    
-    
+function kunena_640_2024_11_02_move_users_socials($parent) {   
     $db     = Factory::getContainer()->get('DatabaseDriver');
     $query  = $db->createQuery()
         ->select('*')
