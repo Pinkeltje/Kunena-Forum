@@ -292,8 +292,7 @@
                  versionname="Internal">
             <query mode="silenterror">
             ALTER TABLE `#__kunena_users`               
-                DROP IF EXISTS `delicious`,
-                DROP IF EXISTS `bsky_app`;
+                DROP IF EXISTS `delicious`;
             </query>
             <phpfile name="6.4.0-2024-10-21_update_configuration"/>
             <query mode="silenterror">ALTER TABLE `#__kunena_users` DROP `socialshare`;</query>
@@ -514,7 +513,7 @@
                 DROP IF EXISTS `ok`,
                 DROP IF EXISTS `pinterest`,
                 DROP IF EXISTS `reddit`,
-                DROP IF EXISTS `bluesky_app`;
+                DROP IF EXISTS `bsky_app`;
             </query>
         </version>
         <version version="@kunenaversion@"
