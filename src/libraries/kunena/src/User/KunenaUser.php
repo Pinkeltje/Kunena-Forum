@@ -742,6 +742,18 @@ class KunenaUser extends CMSObject
                 if ($user->isModerator() && $kuser->isAdmin() && !$user->isAdmin()) {
                     $exception = new KunenaExceptionAuthorise(Text::sprintf('COM_KUNENA_VIEW_USER_EDIT_AUTH_FAILED', $this->getName()), $user->exists() ? 403 : 401);
                 }
+                
+                $banned = $user->isBanned();
+                
+                if ($banned) {
+                    $banned = KunenaBan::getInstanceByUserid($user->userid, true);
+                    
+                    if (!$banned->isLifetime()) {
+                        $exception = new KunenaExceptionAuthorise(Text::sprintf('COM_KUNENA_POST_ERROR_USER_BANNED_NOACCESS_EXPIRY', KunenaDate::getInstance($banned->expiration)->toKunena()), 403);
+                    } else {
+                        $exception = new KunenaExceptionAuthorise(Text::_('COM_KUNENA_POST_ERROR_USER_BANNED_NOACCESS'), 403);
+                    }
+                }
                 break;
             case 'ban':
                 $banInfo = KunenaBan::getInstanceByUserid($this->userid, true);
