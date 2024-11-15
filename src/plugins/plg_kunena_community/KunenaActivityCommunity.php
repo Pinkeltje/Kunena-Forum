@@ -185,9 +185,9 @@ class KunenaActivityCommunity extends KunenaActivity
         	[$message->userid]
         );
 
-        foreach ($subscribers as $userid) {
+        foreach ($subscribers as $sub) {
             $actor  = \CFactory::getUser($message->userid);
-            $target = \CFactory::getUser($userid);
+            $target = \CFactory::getUser($sub->id);
 
             $params = new \CParameter('');
             $params->set('actorName', $actor->getDisplayName());
