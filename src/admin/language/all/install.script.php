@@ -127,8 +127,8 @@ class pkg_kunena_languagesInstallerScript
         $languages = LanguageHelper::getKnownLanguages();
 
         foreach ($languages as $language) {
-            if (file_exists(JPATH_SITE . '/language/' . $language['tag'] . '/' . $language['tag'] . '.kunena_ckeditor.js')) {
-                File::copy(JPATH_SITE . '/language/' . $language['tag'] . '/' . $language['tag'] . '.kunena_ckeditor.js', JPATH_SITE . '/media/kunena/core/js/lang/' . substr($language['tag'], 0, 2) . '.js');
+            if (file_exists(JPATH_SITE . '/language/' . $language['tag'] . '/kunena_ckeditor.js')) {
+                File::copy(JPATH_SITE . '/language/' . $language['tag'] . '/kunena_ckeditor.js', JPATH_SITE . '/media/kunena/core/js/lang/' . substr($language['tag'], 0, 2) . '.js');
             }
         }
     }
