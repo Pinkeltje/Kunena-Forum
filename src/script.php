@@ -40,7 +40,7 @@ class Pkg_KunenaInstallerScript extends InstallerScript
      * @var    string
      * @since  6.0.0
      */
-    protected $minimumJoomla = '5.2.0';
+    protected $minimumJoomla = '5.2.1';
 
     /**
      * List of supported versions. Newest version first!
@@ -50,7 +50,7 @@ class Pkg_KunenaInstallerScript extends InstallerScript
      */
     protected $versions = [
         'PHP'     => [
-            '8.4' => '8.4.0',
+            '8.4' => '8.4.1',
             '8.3' => '8.3.0',
             '8.2' => '8.2.0',
             '8.1' => '8.1.0',
@@ -67,6 +67,7 @@ class Pkg_KunenaInstallerScript extends InstallerScript
             '0'   => '8.4.0', // Preferred version
         ],
         'mariaDB' => [
+            '11.6' => '11.6.2',
             '11.5' => '11.5.2',
             '11.4' => '11.4.2',
             '11.3' => '11.3',
@@ -84,10 +85,10 @@ class Pkg_KunenaInstallerScript extends InstallerScript
             '0' => '10.8.6', // Preferred version
         ],
         'Joomla!' => [
-            '5.2' => '5.2.0',
+            '5.2' => '5.2.1',
             '5.1' => '5.1.4',
             '5.0' => '5.0.3',
-            '0' => '5.2.0',  // Preferred version
+            '0' => '5.2.1',  // Preferred version
         ],
     ];
 
