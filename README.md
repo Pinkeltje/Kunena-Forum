@@ -9,9 +9,9 @@
 
 *Kunena* 6.4 requires
 
-    Joomla: version 5.0.3 or greater (>= 5.1.3 recommended)
-    PHP: version 8.1.0 or greater (>= 8.1.0 recommended)
-    MySQL: version 8.0.13 or greater (>= 8.0.13 recommended)
+    Joomla: version 5.0.3 or greater (>= 5.2.1 recommended)
+    PHP: version 8.1.0 or greater (>= 8.2.0 recommended)
+    MySQL: version 8.4.0 or greater (>= 8.4.0 recommended)
 
 Our installer will check for minimal version requirements and will abort the install if they are no met.
 
