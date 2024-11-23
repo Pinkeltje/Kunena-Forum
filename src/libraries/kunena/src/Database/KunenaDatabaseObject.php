@@ -105,7 +105,7 @@ abstract class KunenaDatabaseObject
      *
      * @since   Kunena 6.0
      */
-    public function bind(array $src = null, array $fields = null, $include = false): bool
+    public function bind(?array $src = null, ?array $fields = null, $include = false): bool
     {
         if (empty($src)) {
             return false;

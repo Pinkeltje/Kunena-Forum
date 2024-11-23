@@ -139,7 +139,7 @@ class KunenaTopicFinder extends KunenaFinder
      *
      * @since   Kunena 6.0
      */
-    public function filterByTime(Date $starting = null, Date $ending = null, $lastPost = true): KunenaTopicFinder
+    public function filterByTime(?Date $starting = null, ?Date $ending = null, $lastPost = true): KunenaTopicFinder
     {
         $name = $lastPost ? 'last' : 'first';
 
@@ -336,7 +336,7 @@ class KunenaTopicFinder extends KunenaFinder
      *
      * @since   Kunena 6.0
      */
-    protected function build(QueryInterface $query = null): void
+    protected function build(?QueryInterface $query = null): void
     {
         if (!empty($this->hold)) {
             $this->hold = ArrayHelper::toInteger($this->hold, 0);

@@ -790,7 +790,7 @@ class KunenaCategory extends KunenaDatabaseObject
      * @since   Kunena 4.0
      * @throws Exception
      */
-    public function isAuthorised($action = 'read', KunenaUser $user = null): bool
+    public function isAuthorised($action = 'read', ?KunenaUser $user = null): bool
     {
         if (KunenaFactory::getConfig()->readOnly) {
             // Special case to ignore authorisation.
@@ -814,7 +814,7 @@ class KunenaCategory extends KunenaDatabaseObject
      * @since   Kunena 4.0
      * @throws Exception
      */
-    public function tryAuthorise($action = 'read', KunenaUser $user = null, $throw = true)
+    public function tryAuthorise($action = 'read', ?KunenaUser $user = null, $throw = true)
     {
         // Special case to ignore authorisation.
         if ($action == 'none') {
@@ -1210,7 +1210,7 @@ class KunenaCategory extends KunenaDatabaseObject
      * @since   Kunena 6.0
      * @throws Exception
      */
-    public function newTopic(array $fields = null, $user = null, array $safefields = null): array
+    public function newTopic(?array $fields = null, $user = null, ?array $safefields = null): array
     {
         $catid           = isset($safefields['category_id']) ? $safefields['category_id'] : $this->getNewTopicCategory($user)->id;
         $user            = KunenaUserHelper::get($user);
@@ -1411,7 +1411,7 @@ class KunenaCategory extends KunenaDatabaseObject
      * @return  boolean  True on success.
      * @since   Kunena 6.0
      */
-    public function bind(array $src = null, array $fields = null, $include = false): bool
+    public function bind(?array $src = null, ?array $fields = null, $include = false): bool
     {
         if (isset($src['channels']) && \is_array($src['channels'])) {
             $src['channels'] = implode(',', $src['channels']);

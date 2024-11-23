@@ -248,7 +248,7 @@ abstract class KunenaFinder
      *
      * @since   Kunena 6.0
      */
-    protected function build(QueryInterface $query = null): void
+    protected function build(?QueryInterface $query = null): void
     {
     }
 

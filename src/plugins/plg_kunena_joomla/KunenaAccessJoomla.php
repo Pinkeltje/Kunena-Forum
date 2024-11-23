@@ -270,7 +270,7 @@ class KunenaAccessJoomla
      *
      * @since   Kunena 6.0
      */
-    public function loadCategoryRoles(array $categories = null): array
+    public function loadCategoryRoles(?array $categories = null): array
     {
         $list = [];
 

@@ -178,7 +178,7 @@ class KunenaAccess
      *
      * @since   Kunena 6.0
      */
-    protected function storeRoles(array $list = null)
+    protected function storeRoles(?array $list = null)
     {
         if (empty($list)) {
             return;

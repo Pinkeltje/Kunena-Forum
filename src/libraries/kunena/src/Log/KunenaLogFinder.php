@@ -46,7 +46,7 @@ class KunenaLogFinder extends KunenaFinder
      *
      * @since   Kunena 5.0
      */
-    public function filterByTime(Date $starting = null, Date $ending = null): KunenaFinder
+    public function filterByTime(?Date $starting = null, ?Date $ending = null): KunenaFinder
     {
         if ($starting && $ending) {
             $this->query->where($this->db->quoteName('a.time') . ' BETWEEN ' . $this->db->quote($starting->toUnix()) . ' AND ' . $this->db->quote($ending->toUnix()));
@@ -137,7 +137,7 @@ class KunenaLogFinder extends KunenaFinder
      *
      * @since   Kunena 5.0
      */
-    protected function build(QueryInterface $query = null): void
+    protected function build(?QueryInterface $query = null): void
     {
     }
 }

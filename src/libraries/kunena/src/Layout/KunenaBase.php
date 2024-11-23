@@ -125,7 +125,7 @@ class KunenaBase extends KunenaLayoutBase
      *
      * @throws Exception
      */
-    public function __construct(string $name, array $paths = null)
+    public function __construct(string $name, ?array $paths = null)
     {
         // Setup dependencies.
         $this->_name        = $name;
@@ -772,7 +772,7 @@ class KunenaBase extends KunenaLayoutBase
      * @since   Kunena 6.0
      * @throws Exception
      */
-    public function subRequest(string $path, Input $input = null, $options = null)
+    public function subRequest(string $path, ?Input $input = null, $options = null)
     {
         return KunenaRequest::factory($path . '/Display', $input, $options)
             ->setLayout($this->getLayout());

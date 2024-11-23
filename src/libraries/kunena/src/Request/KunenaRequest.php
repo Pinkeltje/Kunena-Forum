@@ -53,7 +53,7 @@ class KunenaRequest
      * @since   Kunena 6.0
      * @throws \Exception
      */
-    public static function factory(string $path, Input $input = null, $options = null)
+    public static function factory(string $path, ?Input $input = null, $options = null)
     {
         // Normalize input.
         $words = ucwords(strtolower(trim(preg_replace('/[^a-z0-9_]+/i', ' ', (string) $path))));

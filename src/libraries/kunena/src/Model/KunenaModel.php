@@ -89,7 +89,7 @@ class KunenaModel extends BaseDatabaseModel
      * @throws \Exception
      * @since   Kunena 6.0
      */
-    public function __construct($config = [], MVCFactoryInterface $factory = null)
+    public function __construct($config = [], ?MVCFactoryInterface $factory = null)
     {
         $this->option = 'com_kunena';
         parent::__construct($config, $factory);

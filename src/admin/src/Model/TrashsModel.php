@@ -55,7 +55,7 @@ class TrashsModel extends ListModel
      * @since   Kunena 6.3.0-BETA3
      * @throws  Exception
      */
-    public function __construct($config = [], MVCFactoryInterface $factory = null)
+    public function __construct($config = [], ?MVCFactoryInterface $factory = null)
     {
         parent::__construct($config, $factory);
         if (empty($config['filter_fields'])) {

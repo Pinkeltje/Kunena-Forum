@@ -376,7 +376,7 @@ class KunenaLayout extends KunenaBase
      * @throws Exception
      * @since   Kunena 6.0
      */
-    public function getTopicLink(KunenaTopic $topic, $action = null, $content = null, $title = null, $class = null, KunenaCategory $category = null, bool $follow = true, bool $canonical = false)
+    public function getTopicLink(KunenaTopic $topic, $action = null, $content = null, $title = null, $class = null, ?KunenaCategory $category = null, bool $follow = true, bool $canonical = false)
     {
         KunenaProfiler::getInstance() ? KunenaProfiler::instance()->start('function ' . __CLASS__ . '::' . __FUNCTION__ . '()') : null;
 

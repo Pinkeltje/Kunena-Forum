@@ -1542,7 +1542,7 @@ class KunenaTopic extends KunenaDatabaseObject
      * @throws Exception
      * @since   Kunena 4.0
      */
-    public function isAuthorised($action = 'read', KunenaUser $user = null): bool
+    public function isAuthorised($action = 'read', ?KunenaUser $user = null): bool
     {
         if (KunenaFactory::getConfig()->readOnly) {
             // Special case to ignore authorisation.
@@ -1566,7 +1566,7 @@ class KunenaTopic extends KunenaDatabaseObject
      * @throws Exception
      * @since   Kunena 4.0
      */
-    public function tryAuthorise($action = 'read', KunenaUser $user = null, $throw = true)
+    public function tryAuthorise($action = 'read', ?KunenaUser $user = null, $throw = true)
     {
         // Special case to ignore authorisation.
         if ($action == 'none') {

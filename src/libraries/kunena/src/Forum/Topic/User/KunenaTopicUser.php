@@ -299,7 +299,7 @@ class KunenaTopicUser
      * @since   Kunena 6.0
      * @throws \Exception
      */
-    public function update(KunenaMessage $message = null, int $postDelta = 0): bool
+    public function update(?KunenaMessage $message = null, int $postDelta = 0): bool
     {
         $this->posts       += $postDelta;
         $this->category_id = $this->getTopic()->category_id;
