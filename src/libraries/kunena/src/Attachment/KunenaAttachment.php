@@ -702,7 +702,7 @@ class KunenaAttachment extends KunenaDatabaseObject
      * @throws Exception
      * @since   Kunena 4.0
      */
-    public function isAuthorised($action = 'read', KunenaUser $user = null)
+    public function isAuthorised($action = 'read', ?KunenaUser $user = null)
     {
         return !$this->tryAuthorise($action, $user, false);
     }
@@ -719,7 +719,7 @@ class KunenaAttachment extends KunenaDatabaseObject
      * @throws Exception
      * @since   Kunena 4.0
      */
-    public function tryAuthorise($action = 'read', KunenaUser $user = null, $throw = true)
+    public function tryAuthorise($action = 'read', ?KunenaUser $user = null, $throw = true)
     {
         // Special case to ignore authorisation.
         if ($action == 'none') {
@@ -863,7 +863,7 @@ class KunenaAttachment extends KunenaDatabaseObject
      * @throws \Exception
      * @since   Kunena 4.0
      */
-    public function upload(string $key = 'kattachment', int $catid = null): bool
+    public function upload(string $key = 'kattachment', ?int $catid = null): bool
     {
         $config    = KunenaFactory::getConfig();
         $input     = Factory::getApplication()->input;
@@ -1065,7 +1065,7 @@ class KunenaAttachment extends KunenaDatabaseObject
      *
      * @since   Kunena 6.0
      */
-    public function removeBBCodeInMessage(string $editor_text = null): string
+    public function removeBBCodeInMessage(?string $editor_text = null): string
     {
         if (!$this->inline) {
             return false;
