@@ -409,9 +409,9 @@ class KunenaLog
     	int $type,
     	string $operation,
     	$data,
-    	KunenaCategory $category = null,
-    	KunenaTopic $topic = null,
-    	KunenaUser $user = null
+    	?KunenaCategory $category = null,
+    	?KunenaTopic $topic = null,
+    	?KunenaUser $user = null
     ): void {
         static::$entries[] = new KunenaEntry($type, $operation, $data, $category, $topic, $user);
     }
