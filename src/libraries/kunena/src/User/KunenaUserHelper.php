@@ -404,7 +404,7 @@ abstract class KunenaUserHelper
      *
      * @since   Kunena 5.0
      */
-    public static function getGroupsForUsers(array $groupIds = null, array $userIds = null, $recursive = false): array
+    public static function getGroupsForUsers(?array $groupIds = null, ?array $userIds = null, $recursive = false): array
     {
         // Check for bad calls.
         if (\is_null($userIds) && \is_null($groupIds)) {

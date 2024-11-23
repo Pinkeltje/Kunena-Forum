@@ -122,7 +122,7 @@ class KunenaPage extends KunenaLayout
      *
      * @throws  Exception
      */
-    public function execute($path, Input $input = null, $options = null)
+    public function execute($path, ?Input $input = null, $options = null)
     {
         return $this->request($path, $input, $options)->execute();
     }
@@ -139,7 +139,7 @@ class KunenaPage extends KunenaLayout
      * @since   Kunena 6.0
      * @throws Exception
      */
-    public function request($path, Input $input = null, $options = null)
+    public function request($path, ?Input $input = null, $options = null)
     {
         return KunenaRequest::factory($path . '/Display', $input, $options ? $options : $this->getOptions())
             ->setPrimary()->set('layout', $this->getLayout());

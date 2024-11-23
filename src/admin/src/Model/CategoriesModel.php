@@ -107,7 +107,7 @@ class CategoriesModel extends KunenaModel
      *
      * @see     JController
      */
-    public function __construct($config = [], MVCFactoryInterface $factory = null)
+    public function __construct($config = [], ?MVCFactoryInterface $factory = null)
     {
         parent::__construct($config, $factory);
 

@@ -67,7 +67,7 @@ class KunenaUserFinder extends KunenaFinder
      *
      * @since   Kunena 6.0
      */
-    public function filterByTime(Date $starting = null, Date $ending = null, $register = true): KunenaFinder
+    public function filterByTime(?Date $starting = null, ?Date $ending = null, $register = true): KunenaFinder
     {
         $name = $register ? 'registerDate' : 'lastvisitDate';
 

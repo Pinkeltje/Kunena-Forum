@@ -128,7 +128,7 @@ class KunenaMessageFinder extends KunenaFinder
      *
      * @since   Kunena 6.0
      */
-    public function filterByTime(Date $starting = null, Date $ending = null): KunenaMessageFinder
+    public function filterByTime(?Date $starting = null, ?Date $ending = null): KunenaMessageFinder
     {
         if ($starting && $ending) {
             $this->query->where($this->db->quoteName('a.time') . ' BETWEEN ' . $this->db->quote($starting->toUnix()) . ' AND ' . $this->db->quote($ending->toUnix()));
@@ -153,7 +153,7 @@ class KunenaMessageFinder extends KunenaFinder
      *
      * @since   Kunena 6.0
      */
-    public function filterByUser(KunenaUser $user = null, $action = 'posted'): KunenaMessageFinder
+    public function filterByUser(?KunenaUser $user = null, $action = 'posted'): KunenaMessageFinder
     {
         if (\is_null($user) || \is_null($user->userid)) {
             return $this;
@@ -229,7 +229,7 @@ class KunenaMessageFinder extends KunenaFinder
      *
      * @since   Kunena 6.0
      */
-    protected function build(QueryInterface $query = null): void
+    protected function build(?QueryInterface $query = null): void
     {
         if (!empty($this->hold)) {
             $this->hold = ArrayHelper::toInteger($this->hold, 0);
