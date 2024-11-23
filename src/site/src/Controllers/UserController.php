@@ -590,12 +590,12 @@ class UserController extends KunenaController
         }
  
         // Save values entered by user for the social 
-        $socials = KunenaUserSocials::getInstance();
-        
+        $socials = KunenaUserSocials::getInstance($user->userid);
+
         foreach($socials as $key => $social) {
-            $social->value = $input->$method->get('social'.$key, '', 'string');
+            $socials->$key = $input->$method->get('social'.$key, '', 'string');
         }
-        
+
         $socials->save();
 
         $user->personalText = $input->$method->get('personalText', '', 'string');
@@ -873,7 +873,7 @@ class UserController extends KunenaController
      * @throws Exception
      * @since   Kunena 6.0
      */
-    protected function report(int $userid = 0, string $evidence = null)
+    protected function report(int $userid = 0, ?string $evidence = null)
     {
         if (!$this->config->stopForumSpamKey || !$userid) {
             return false;
