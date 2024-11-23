@@ -242,7 +242,7 @@ class KunenaUserSocials
      * @throws  Exception
      * @since   Kunena 6.4
      */
-    public static function getInstance($id = 0, $useCache = true): ?KunenaUserSocials
+    public static function getInstance($userid = 0, $useCache = true): ?KunenaUserSocials
     {
         static $instance = null;
 
@@ -256,8 +256,8 @@ class KunenaUserSocials
             if (!$instance) {
                 $instance = new KunenaUserSocials();
                 
-                if ($id > 0) {
-                    $instance->userid = $id;
+                if ($userid > 0) {
+                    $instance->userid = $userid;
                 }
                 
                 $instance->load();
@@ -267,8 +267,8 @@ class KunenaUserSocials
         } else {
             $instance = new KunenaUserSocials();
             
-            if ($id > 0) {
-                $instance->userid = $id;
+            if ($userid > 0) {
+                $instance->userid = $userid;
             }
             
             $instance->load();
