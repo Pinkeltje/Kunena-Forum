@@ -14,21 +14,21 @@
 
     <fileset>
         <files folder="admin" target="administrator/language/id-ID">
-            <filename>id-ID.com_kunena.admin.controllers.ini</filename>
-            <filename>id-ID.com_kunena.admin.ini</filename>
-            <filename>id-ID.com_kunena.admin.models.ini</filename>
-            <filename>id-ID.com_kunena.admin.models.ini</filename>
-            <filename>id-ID.com_kunena.admin.sys.ini</filename>
-            <filename>id-ID.com_kunena.admin.views.ini</filename>
-            <filename>id-ID.com_kunena.admin.install.ini</filename>
+            <filename>com_kunena.admin.controllers.ini</filename>
+            <filename>com_kunena.admin.ini</filename>
+            <filename>com_kunena.admin.models.ini</filename>
+            <filename>com_kunena.admin.models.ini</filename>
+            <filename>com_kunena.admin.sys.ini</filename>
+            <filename>com_kunena.admin.views.ini</filename>
+            <filename>com_kunena.admin.install.ini</filename>
         </files>
         <files folder="site" target="language/id-ID">
-            <filename>id-ID.com_kunena.site.ini</filename>
-            <filename>id-ID.com_kunena.site.models.ini</filename>
-            <filename>id-ID.com_kunena.site.templates.ini</filename>
-            <filename>id-ID.com_kunena.site.views.ini</filename>
-            <filename>id-ID.kunena_tmpl_aurelia.ini</filename>
-            <filename>id-ID.kunena_ckeditor.js</filename>
+            <filename>com_kunena.site.ini</filename>
+            <filename>com_kunena.site.models.ini</filename>
+            <filename>com_kunena.site.templates.ini</filename>
+            <filename>com_kunena.site.views.ini</filename>
+            <filename>kunena_tmpl_aurelia.ini</filename>
+            <filename>kunena_ckeditor.js</filename>
         </files>
     </fileset>
 </extension>

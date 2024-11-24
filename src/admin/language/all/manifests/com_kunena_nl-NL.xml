@@ -7,28 +7,28 @@
     <build>@kunenaversionbuild@</build>
     <author>Kunena Team</author>
     <authorEmail>translations@kunena.org</authorEmail>
-    <authorUrl>https://www.transifex.com/projects/p/Kunena/team/nl_NL/</authorUrl>
+    <authorUrl>https://crowdin.com/project/kunena-forum/nl_NL/</authorUrl>
     <copyright>(C) 2008 - @currentyear@ Kunena Team. All rights reserved.</copyright>
     <license>GNU/GPL</license>
     <description>Dutch (Netherlands) language file for Kunena Forum Component</description>
 
     <fileset>
         <files folder="admin" target="administrator/language/nl-NL">
-            <filename>nl-NL.com_kunena.admin.controllers.ini</filename>
-            <filename>nl-NL.com_kunena.admin.ini</filename>
-            <filename>nl-NL.com_kunena.admin.models.ini</filename>
-            <filename>nl-NL.com_kunena.admin.models.ini</filename>
-            <filename>nl-NL.com_kunena.admin.sys.ini</filename>
-            <filename>nl-NL.com_kunena.admin.views.ini</filename>
-            <filename>nl-NL.com_kunena.admin.install.ini</filename>
+            <filename>com_kunena.admin.controllers.ini</filename>
+            <filename>com_kunena.admin.ini</filename>
+            <filename>com_kunena.admin.models.ini</filename>
+            <filename>com_kunena.admin.models.ini</filename>
+            <filename>com_kunena.admin.sys.ini</filename>
+            <filename>com_kunena.admin.views.ini</filename>
+            <filename>com_kunena.admin.install.ini</filename>
         </files>
         <files folder="site" target="language/nl-NL">
-            <filename>nl-NL.com_kunena.site.ini</filename>
-            <filename>nl-NL.com_kunena.site.models.ini</filename>
-            <filename>nl-NL.com_kunena.site.templates.ini</filename>
-            <filename>nl-NL.com_kunena.site.views.ini</filename>
-            <filename>nl-NL.kunena_tmpl_aurelia.ini</filename>
-            <filename>nl-NL.kunena_ckeditor.js</filename>
+            <filename>com_kunena.site.ini</filename>
+            <filename>com_kunena.site.models.ini</filename>
+            <filename>com_kunena.site.templates.ini</filename>
+            <filename>com_kunena.site.views.ini</filename>
+            <filename>kunena_tmpl_aurelia.ini</filename>
+            <filename>kunena_ckeditor.js</filename>
         </files>
     </fileset>
 </extension>

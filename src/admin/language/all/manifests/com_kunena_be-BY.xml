@@ -7,7 +7,7 @@
     <build>@kunenaversionbuild@</build>
     <author>Kunena Team</author>
     <authorEmail>translations@kunena.org</authorEmail>
-    <authorUrl>https://www.transifex.com/projects/p/Kunena/team/be-BY/</authorUrl>
+    <authorUrl>https://crowdin.com/project/kunena-forum/be-BY/</authorUrl>
     <copyright>(C) 2008 - @currentyear@ Kunena Team. All rights reserved.</copyright>
     <license>GNU/GPL</license>
     <description>Belarusian language file for Kunena Forum Component</description>
