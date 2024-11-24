@@ -14,19 +14,19 @@
 
     <fileset>
         <files folder="admin" target="administrator/language/da-DK">
-            <filename>da-DK.com_kunena.controllers.ini</filename>
-            <filename>da-DK.com_kunena.ini</filename>
-            <filename>da-DK.com_kunena.libraries.ini</filename>
-            <filename>da-DK.com_kunena.models.ini</filename>
-            <filename>da-DK.com_kunena.sys.ini</filename>
-            <filename>da-DK.com_kunena.views.ini</filename>
-            <filename>da-DK.com_kunena.install.ini</filename>
+            <filename>da-DK.com_kunena.admin.controllers.ini</filename>
+            <filename>da-DK.com_kunena.admin.ini</filename>
+            <filename>da-DK.com_kunena.admin.models.ini</filename>
+            <filename>da-DK.com_kunena.admin.models.ini</filename>
+            <filename>da-DK.com_kunena.admin.sys.ini</filename>
+            <filename>da-DK.com_kunena.admin.views.ini</filename>
+            <filename>da-DK.com_kunena.admin.install.ini</filename>
         </files>
         <files folder="site" target="language/da-DK">
-            <filename>da-DK.com_kunena.ini</filename>
-            <filename>da-DK.com_kunena.models.ini</filename>
-            <filename>da-DK.com_kunena.templates.ini</filename>
-            <filename>da-DK.com_kunena.views.ini</filename>
+            <filename>da-DK.com_kunena.site.ini</filename>
+            <filename>da-DK.com_kunena.site.models.ini</filename>
+            <filename>da-DK.com_kunena.site.templates.ini</filename>
+            <filename>da-DK.com_kunena.site.views.ini</filename>
             <filename>da-DK.kunena_tmpl_aurelia.ini</filename>
             <filename>da-DK.kunena_ckeditor.js</filename>
         </files>

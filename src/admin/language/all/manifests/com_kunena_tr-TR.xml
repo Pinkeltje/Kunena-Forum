@@ -14,19 +14,19 @@
 
     <fileset>
         <files folder="admin" target="administrator/language/tr-TR">
-            <filename>tr-TR.com_kunena.controllers.ini</filename>
-            <filename>tr-TR.com_kunena.ini</filename>
-            <filename>tr-TR.com_kunena.libraries.ini</filename>
-            <filename>tr-TR.com_kunena.models.ini</filename>
-            <filename>tr-TR.com_kunena.sys.ini</filename>
-            <filename>tr-TR.com_kunena.views.ini</filename>
-            <filename>tr-TR.com_kunena.install.ini</filename>
+            <filename>tr-TR.com_kunena.admin.controllers.ini</filename>
+            <filename>tr-TR.com_kunena.admin.ini</filename>
+            <filename>tr-TR.com_kunena.admin.models.ini</filename>
+            <filename>tr-TR.com_kunena.admin.models.ini</filename>
+            <filename>tr-TR.com_kunena.admin.sys.ini</filename>
+            <filename>tr-TR.com_kunena.admin.views.ini</filename>
+            <filename>tr-TR.com_kunena.admin.install.ini</filename>
         </files>
         <files folder="site" target="language/tr-TR">
-            <filename>tr-TR.com_kunena.ini</filename>
-            <filename>tr-TR.com_kunena.models.ini</filename>
-            <filename>tr-TR.com_kunena.templates.ini</filename>
-            <filename>tr-TR.com_kunena.views.ini</filename>
+            <filename>tr-TR.com_kunena.site.ini</filename>
+            <filename>tr-TR.com_kunena.site.models.ini</filename>
+            <filename>tr-TR.com_kunena.site.templates.ini</filename>
+            <filename>tr-TR.com_kunena.site.views.ini</filename>
             <filename>tr-TR.kunena_tmpl_aurelia.ini</filename>
             <filename>tr-TR.kunena_ckeditor.js</filename>
         </files>

@@ -14,19 +14,19 @@
 
     <fileset>
         <files folder="admin" target="administrator/language/ur-PK">
-            <filename>ur-PK.com_kunena.controllers.ini</filename>
-            <filename>ur-PK.com_kunena.ini</filename>
-            <filename>ur-PK.com_kunena.libraries.ini</filename>
-            <filename>ur-PK.com_kunena.models.ini</filename>
-            <filename>ur-PK.com_kunena.sys.ini</filename>
-            <filename>ur-PK.com_kunena.views.ini</filename>
-            <filename>ur-PK.com_kunena.install.ini</filename>
+            <filename>ur-PK.com_kunena.admin.controllers.ini</filename>
+            <filename>ur-PK.com_kunena.admin.ini</filename>
+            <filename>ur-PK.com_kunena.admin.models.ini</filename>
+            <filename>ur-PK.com_kunena.admin.models.ini</filename>
+            <filename>ur-PK.com_kunena.admin.sys.ini</filename>
+            <filename>ur-PK.com_kunena.admin.views.ini</filename>
+            <filename>ur-PK.com_kunena.admin.install.ini</filename>
         </files>
         <files folder="site" target="language/ur-PK">
-            <filename>ur-PK.com_kunena.ini</filename>
-            <filename>ur-PK.com_kunena.models.ini</filename>
-            <filename>ur-PK.com_kunena.templates.ini</filename>
-            <filename>ur-PK.com_kunena.views.ini</filename>
+            <filename>ur-PK.com_kunena.site.ini</filename>
+            <filename>ur-PK.com_kunena.site.models.ini</filename>
+            <filename>ur-PK.com_kunena.site.templates.ini</filename>
+            <filename>ur-PK.com_kunena.site.views.ini</filename>
             <filename>ur-PK.kunena_tmpl_aurelia.ini</filename>
         </files>
     </fileset>
