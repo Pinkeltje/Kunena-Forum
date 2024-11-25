@@ -17,7 +17,7 @@
             <filename>com_kunena.controllers.ini</filename>
             <filename>com_kunena.ini</filename>
             <filename>com_kunena.models.ini</filename>
-            <filename>com_kunena.models.ini</filename>
+            <filename>com_kunena.libraries.ini</filename>
             <filename>com_kunena.sys.ini</filename>
             <filename>com_kunena.views.ini</filename>
             <filename>com_kunena.install.ini</filename>
