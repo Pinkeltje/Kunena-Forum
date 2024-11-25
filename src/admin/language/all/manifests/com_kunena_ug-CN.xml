@@ -14,19 +14,19 @@
 
     <fileset>
         <files folder="admin" target="administrator/language/ug-CN">
-            <filename>com_kunena.admin.controllers.ini</filename>
-            <filename>com_kunena.admin.ini</filename>
-            <filename>com_kunena.admin.models.ini</filename>
-            <filename>com_kunena.admin.models.ini</filename>
-            <filename>com_kunena.admin.sys.ini</filename>
-            <filename>com_kunena.admin.views.ini</filename>
-            <filename>com_kunena.admin.install.ini</filename>
+            <filename>com_kunena.controllers.ini</filename>
+            <filename>com_kunena.ini</filename>
+            <filename>com_kunena.models.ini</filename>
+            <filename>com_kunena.models.ini</filename>
+            <filename>com_kunena.sys.ini</filename>
+            <filename>com_kunena.views.ini</filename>
+            <filename>com_kunena.install.ini</filename>
         </files>
         <files folder="site" target="language/ug-CN">
-            <filename>com_kunena.site.ini</filename>
-            <filename>com_kunena.site.models.ini</filename>
-            <filename>com_kunena.site.templates.ini</filename>
-            <filename>com_kunena.site.views.ini</filename>
+            <filename>com_kunena.ini</filename>
+            <filename>com_kunena.models.ini</filename>
+            <filename>com_kunena.templates.ini</filename>
+            <filename>com_kunena.views.ini</filename>
             <filename>kunena_tmpl_aurelia.ini</filename>
             <filename>kunena_ckeditor.js</filename>
         </files>
