@@ -2233,7 +2233,7 @@ class KunenaUser extends CMSObject
             'telegram'         => ['url' => 'https://t.me/##VALUE##', 'title' => Text::_('COM_KUNENA_MYPROFILE_TELEGRAM'), 'nourl' => '0'],
             'apple'            => ['url' => '##VALUE##', 'title' => Text::_('COM_KUNENA_MYPROFILE_APPLE'), 'nourl' => '1'],
             'vimeo'            => ['url' => 'https://vimeo.com/user##VALUE##', 'title' => Text::_('COM_KUNENA_MYPROFILE_VIMEO'), 'nourl' => '1'],
-            'whatsapp'         => ['url' => '##VALUE##', 'title' => Text::_('COM_KUNENA_MYPROFILE_WHATSAPP'), 'nourl' => '1'],
+            'whatsapp'         => ['url' => 'https://wa.me/##VALUE##', 'title' => Text::_('COM_KUNENA_MYPROFILE_WHATSAPP'), 'nourl' => '0'],
             'youtube'          => ['url' => 'https://www.youtube-nocookie.com/##VALUE##', 'title' => Text::_('COM_KUNENA_MYPROFILE_YOUTUBE'), 'nourl' => '0'],
             'ok'               => ['url' => 'https://ok.ru/##VALUE##', 'title' => Text::_('COM_KUNENA_MYPROFILE_OK'), 'nourl' => '0'],
             'pinterest'        => ['url' => 'https://pinterest.com/##VALUE##', 'title' => Text::_('COM_KUNENA_MYPROFILE_PINTEREST'), 'nourl' => '0'],
