@@ -58,6 +58,7 @@ class Pkg_KunenaInstallerScript extends InstallerScript
             '0'   => '7.4.1', // Preferred version
         ],
         'MySQL'   => [
+            '9.0' => '9.0.0',
             '8.4' => '8.4.0',
             '8.3' => '8.3.0',
             '8.2' => '8.2.0',
@@ -67,6 +68,7 @@ class Pkg_KunenaInstallerScript extends InstallerScript
             '0'   => '8.0.13', // Preferred version
         ],
         'mariaDB' => [
+            '11.4' => '11.4.2',
             '11.3' => '11.3',
             '11.2' => '11.2',
             '11.1' => '11.1',
@@ -86,11 +88,11 @@ class Pkg_KunenaInstallerScript extends InstallerScript
             '0' => '10.8.6' // Preferred version
         ],
         'Joomla!' => [
-            '5.2' => '5.2.0',
+            '5.2' => '5.2.2',
             '5.1' => '5.1.4',
             '5.0' => '5.0.3',
             '4.4' => '4.4.9',
-            '0' => '5.2.0',  // Preferred version
+            '0' => '5.2.2',  // Preferred version
         ],
     ];
 
