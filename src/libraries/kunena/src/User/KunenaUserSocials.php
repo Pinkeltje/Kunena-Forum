@@ -608,9 +608,9 @@ class KunenaUserSocials
     },
     "whatsapp": {
         "value": "",
-        "url": "##VALUE##",
+        "url": "https://wa.me/##VALUE##",
         "title": "COM_KUNENA_MYPROFILE_WHATSAPP",
-        "nourl": 1
+        "nourl": 0
     },
     "youtube": {
         "value": "",
