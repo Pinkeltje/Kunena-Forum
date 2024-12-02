@@ -115,7 +115,7 @@ class CategoriesController extends KunenaController
         $categories = KunenaCategoryHelper::getCategories($cid);
 
         foreach ($categories as $category) {
-            if ($category->get($variable) == $value) {
+            if ($category->$variable == $value) {
                 continue;
             }
 
@@ -125,7 +125,7 @@ class CategoriesController extends KunenaController
                 	'notice'
                 );
             } elseif (!$category->isCheckedOut($this->me->userid)) {
-                $category->set($variable, $value);
+                $category->$variable = $value;
 
                 try {
                     $category->save();
