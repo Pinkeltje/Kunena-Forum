@@ -107,7 +107,7 @@ class CreditsDisplay extends KunenaControllerDisplay
             [
                 'name'  => 'Matias Griese',
                 'url'   => 'https://www.kunena.org/forum/user/63-matias',
-                'title' => Text::_('COM_KUNENA_CREDITS_DEVELOPMENT'), ],
+                'title' => Text::_('COM_KUNENA_CREDITS_CO_FOUNDER'), ],
             [
                 'name'  => 'Oliver Ratzesberger',
                 'url'   => 'https://www.kunena.org/forum/user/64-fxstein',
