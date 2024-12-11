@@ -52,15 +52,16 @@ class HtmlView extends BaseHtmlView
         $this->addToolbar();
 
         $lang = Factory::getApplication()->getLanguage();
-        $lang->load('mod_sampleData', JPATH_ADMINISTRATOR);
+        $lang->load('mod_sampledata', JPATH_ADMINISTRATOR);
 
         if (!KunenaForum::versionSampleData()) {
             Factory::getApplication()->getDocument()->getWebAssetManager()
-                ->registerAndUseScript('mod_sampleData', 'mod_sampleData/sampleData-process.js', [], ['defer' => true], ['core']);
+                ->registerAndUseScript('mod_sampledata', 'mod_sampledata/sampledata-process.js', [], ['defer' => true], ['core']);
 
+            Text::script('MOD_SAMPLEDATA_COMPLETED');
             Text::script('MOD_SAMPLEDATA_CONFIRM_START');
-            Text::script('MOD_SAMPLEDATA_ITEM_ALREADY_PROCESSED');
             Text::script('MOD_SAMPLEDATA_INVALID_RESPONSE');
+            Text::script('MOD_SAMPLEDATA_ITEM_ALREADY_PROCESSED');
 
             Factory::getApplication()->getDocument()->addScriptOptions(
                 'sample-data',
@@ -73,29 +74,29 @@ class HtmlView extends BaseHtmlView
         $this->KunenaMenusExists = KunenaMenuHelper::KunenaMenusExists();
 
         $this->upgradeDatabase();
-        
-        $logFinder = new KunenaLogFinder();        
+
+        $logFinder = new KunenaLogFinder();
         $this->numberOfLogs = $logFinder->count();
-        
+
         $count = KunenaStatistics::getInstance()->loadCategoryCount();
         $this->categoriesCount = $count['sections'] . ' / ' . $count['categories'];
-        
+
         $lastid = KunenaUserHelper::getLastId();
         $user                     = KunenaUser::getInstance($lastid)->registerDate;
         $this->lastUserRegisteredDate = KunenaDate::getInstance($user)->toKunena('ago');
 
         // Get the number of messages in trashbin
         $messageFinder = new KunenaMessageFinder;
-        $messageFinder->filterByHold([2,3]);
+        $messageFinder->filterByHold([2, 3]);
         $messagesTrashedCount = $messageFinder->count();
-        
+
         // Get the number of topics in trashbin
         $topicFinder = new KunenaTopicFinder;
-        $topicFinder->filterByHold([2,3]);
+        $topicFinder->filterByHold([2, 3]);
         $topicTrashedCount = $topicFinder->count();
 
         $this->messagesTopicsInTrashBin = $messagesTrashedCount + $topicTrashedCount;
-        
+
         return parent::display($tpl);
     }
 
