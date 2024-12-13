@@ -95,37 +95,45 @@ $labels          = $this->ktemplate->params->get('labels');
                             <div><?php echo Text::_('COM_KUNENA_MODERATION_CHANGE_TOPIC_ICON'); ?>:</div>
                             <br />
                             <div class="kmoderate-topicIcons">
-                                <?php foreach ($this->topicIcons as $icon) :
-                                ?>
-                                    <input type="radio" id="radio<?php echo $icon->id ?>" name="topic_emoticon"
-                                        value="<?php echo $icon->id ?>" <?php echo !empty($icon->checked) ? ' checked="checked" ' : '' ?> />
-                                    <?php if ($this->config->topicIcons && $topicicontype == 'svg') :
-                                    ?>
-                                        <label class="radio inline" for="radio<?php echo $icon->id; ?>" title="<?php echo Text::_($icon->title); ?>">
-                                            <?php
-                                            if (!$this->category->iconset) :
-                                                $this->category->iconset = 'default';
-                                            endif; ?>
-                                            <?php echo KunenaSvgIcons::loadsvg($icon->svg, 'usertopicIcons', $this->category->iconset); ?>
-                                        <?php elseif ($this->config->topicIcons && $topicicontype == 'fa') :
-                                        ?>
-                                            <label class="radio inline" for="radio<?php echo $icon->id; ?>" title="<?php echo Text::_($icon->title); ?>"><i
-                                                    class="fa fa-<?php echo $icon->fa; ?> glyphicon-topic fa-2x"></i>
-                                            <?php else :
-                                            ?>
-                                                <label class="radio inline" for="radio<?php echo $icon->id; ?>" title="<?php echo Text::_($icon->title); ?>"><img
-                                                        loading=lazy
-                                                        src="<?php echo $icon->relpath; ?>"
-                                                        alt="<?php echo $icon->name; ?>"
-                                                        style=border:0; />
-                                                <?php endif; ?>
-                                                </label>
-                                            <?php endforeach; ?>
-                            </div>
-                        <?php elseif ($labels && !$this->config->topicIcons) :
-                        ?>
-                            <div><strong><?php echo Text::_('COM_KUNENA_MODERATION_CHANGE_LABEL'); ?>:</strong></div>
-                            <br />
+    <?php foreach ($this->topicIcons as $icon) : ?>
+        <input type="radio" 
+               id="radio<?php echo $icon->id; ?>" 
+               name="topic_emoticon"
+               value="<?php echo $icon->id; ?>" 
+               <?php echo !empty($icon->checked) ? ' checked="checked" ' : ''; ?> 
+        />
+        
+        <?php 
+        // Set default iconset if not defined
+        if (!$this->category->iconset) {
+            $this->category->iconset = 'default';
+        }
+        
+        // Determine icon type and render accordingly
+        $topicicontype = $this->config->topicIcons ? $topicicontype : null;
+        ?>
+        
+        <label class="radio inline" for="radio<?php echo $icon->id; ?>" title="<?php echo Text::_($icon->title); ?>">
+            <?php if ($topicicontype === 'svg'): ?>
+                <?php echo KunenaSvgIcons::loadsvg($icon->svg, 'usertopicIcons', $this->category->iconset); ?>
+            <?php elseif ($topicicontype === 'fa'): ?>
+                <i class="fa fa-<?php echo $icon->fa; ?> glyphicon-topic fa-2x"></i>
+            <?php else: ?>
+                <img loading="lazy"
+                     src="<?php echo $icon->relpath; ?>"
+                     alt="<?php echo $icon->name; ?>"
+                     style="border:0;" 
+                />
+            <?php endif; ?>
+        </label>
+    <?php endforeach; ?>
+</div>
+
+<?php if ($labels && !$this->config->topicIcons): ?>
+    <div>
+        <strong><?php echo Text::_('COM_KUNENA_MODERATION_CHANGE_LABEL'); ?>:</strong>
+    </div>
+    <br />
                             <div class="kmoderate-topicIcons">
                                 <?php foreach ($this->topicIcons as $icon) :
                                 ?>
@@ -157,6 +165,7 @@ $labels          = $this->ktemplate->params->get('labels');
                             <br />
                         <?php endif; ?>
                         <br />
+                        <?php endif; ?>
                         <?php if (isset($this->message)) :
                         ?>
                             <hr />
