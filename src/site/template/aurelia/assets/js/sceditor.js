@@ -736,6 +736,13 @@ jQuery(document).ready(function ($) {
 		if (sceditor.instance(textarea).val().length > 0)
 		{
 			$('#form_submit_button').removeAttr("disabled");
+		} else {
+			const cat = localStorage.getItem('copyKunenaeditor');
+
+			if (cat) {
+				sceditor.instance(textarea).val(cat);
+				localStorage.removeItem('copyKunenaeditor');
+			}
 		}
 
 		sceditor.instance(textarea).bind('valuechanged', function(e) {
