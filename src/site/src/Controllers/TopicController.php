@@ -643,7 +643,7 @@ class TopicController extends KunenaController
 
             return;
         }
-        
+
         // Need to do to the replacement in case of VBA code is inserted without the bbcode tags [code][/code]
         $fields['message'] = preg_replace('~"",""~', '"", ""', $fields['message']);
 
@@ -2640,7 +2640,7 @@ class TopicController extends KunenaController
 
         $template = KunenaFactory::getTemplate();
 
-        $xmlfile = JPATH_ROOT . '/media/kunena/topic_icons/' . $categoryIconset . '/topicIcons.xml';
+        $xmlfile = JPATH_ROOT . '/media/kunena/topic_icons/' . $categoryIconset . '/topicicons.xml';
 
         if (is_file($xmlfile)) {
             $xml = simplexml_load_file($xmlfile);
