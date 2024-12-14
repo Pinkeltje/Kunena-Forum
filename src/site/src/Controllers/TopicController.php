@@ -195,9 +195,9 @@ class TopicController extends KunenaController
         if ($attachs_id === null) {
             throw new RuntimeException(Text::_('Bad Request'), 400);
         }
-        
+
         $attach_ids_final = [];
-        
+
         foreach ($attachs_id as $attach) {
             if (\is_array($attach)) {
                 $attach_ids_final[] = $attach['0'];
@@ -643,7 +643,7 @@ class TopicController extends KunenaController
 
             return;
         }
-        
+
         // Need to do to the replacement in case of VBA code is inserted without the bbcode tags [code][/code]
         $fields['message'] = preg_replace('~"",""~', '"", ""', $fields['message']);
 
@@ -911,7 +911,7 @@ class TopicController extends KunenaController
             } catch (Exception $e) {
                 $this->app->enqueueMessage($e->getMessage(), 'error');
             }
-            
+
             $poll        = $topic->getPoll();
             $poll->title = $poll_title;
 
@@ -929,14 +929,14 @@ class TopicController extends KunenaController
             }
 
             $topic->poll_id = $poll->id;
-            
+
             try {
                 $topic->save();
             } catch (Exception $e) {
                 $this->app->enqueueMessage($e->getMessage(), 'error');
             }
-            
-            $this->app->enqueueMessage(Text::_('COM_KUNENA_POLL_CREATED'), 'success');            
+
+            $this->app->enqueueMessage(Text::_('COM_KUNENA_POLL_CREATED'), 'success');
         }
 
         // Post Private message
@@ -2583,7 +2583,7 @@ class TopicController extends KunenaController
 
         $template = KunenaFactory::getTemplate();
 
-        $xmlfile = JPATH_ROOT . '/media/kunena/topic_icons/' . $categoryIconset . '/topicIcons.xml';
+        $xmlfile = JPATH_ROOT . '/media/kunena/topic_icons/' . $categoryIconset . '/topicicons.xml';
 
         if (is_file($xmlfile)) {
             $xml = simplexml_load_file($xmlfile);
