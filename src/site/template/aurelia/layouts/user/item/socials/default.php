@@ -19,7 +19,7 @@ $showAll = isset($this->showAll) ? $this->showAll : false;
 ?>
 <div class="inline float-end">
     <?php /*foreach ($this->socials as $key => $social) {
-        
+      <i class="fa-solid fa-house"></i>  
     }*/
     ?>
 </div>

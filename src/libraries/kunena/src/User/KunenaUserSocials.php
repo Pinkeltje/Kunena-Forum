@@ -472,13 +472,15 @@ class KunenaUserSocials
         "value": "",
         "url": "https://x.com/##VALUE##",
         "title": "COM_KUNENA_MYPROFILE_X_SOCIAL",
-        "nourl": 0
+        "nourl": 0,
+        "fa": "fa-brands fa-x-twitter"
     },
     "facebook": {
         "value": "",
         "url": "https://www.facebook.com/##VALUE##",
         "title": "COM_KUNENA_MYPROFILE_FACEBOOK",
-        "nourl": 0
+        "nourl": 0,
+        "fa": "fa-brands fa-facebook"
     },
     "myspace": {
         "value": "",
@@ -490,49 +492,57 @@ class KunenaUserSocials
         "value": "",
         "url": "https://www.linkedin.com/in/##VALUE##",
         "title": "COM_KUNENA_MYPROFILE_LINKEDIN",
-        "nourl": 0
+        "nourl": 0,
+        "fa": "fa-brands fa-linkedin"
     },
     "linkedin_company": {
         "value": "",
         "url": "https://www.linkedin.com/company/##VALUE##",
         "title": "COM_KUNENA_MYPROFILE_LINKEDIN",
-        "nourl": 0
+        "nourl": 0,
+        "fa": "fa-brands fa-linkedin"
     },
     "digg": {
         "value": "",
         "url": "https://www.digg.com/users/##VALUE##",
         "title": "COM_KUNENA_MYPROFILE_DIGG",
-        "nourl": 0
+        "nourl": 0,
+        "fa": "fa-brands fa-digg"
     },
     "skype": {
         "value": "",
         "url": "skype:##VALUE##",
         "title": "COM_KUNENA_MYPROFILE_SKYPE",
-        "nourl": 0
+        "nourl": 0,
+        "fa": "fa-brands fa-skype"
     },
     "yim": {
         "value": "",
         "url": "##VALUE##",
         "title": "COM_KUNENA_MYPROFILE_YIM",
-        "nourl": 1
+        "nourl": 1,
+        "fa": "fa-brands fa-yahoo"
     },
     "google": {
         "value": "",
         "url": "##VALUE##",
         "title": "COM_KUNENA_MYPROFILE_GOOGLE",
-        "nourl": 1
+        "nourl": 1,
+        "fa": "fa-brands fa-google"
     },
     "github": {
         "value": "",
         "url": "https://www.github.com/##VALUE##",
         "title": "COM_KUNENA_MYPROFILE_GITHUB",
-        "nourl": 0
+        "nourl": 0,
+        "fa": "fa-brands fa-github"
     },
     "microsoft": {
         "value": "",
         "url": "##VALUE##",
         "title": "COM_KUNENA_MYPROFILE_MICROSOFT",
-        "nourl": 1
+        "nourl": 1,
+        "fa": "fa-brands fa-microsoft"
     },
     "blogspot": {
         "value": "",
@@ -544,7 +554,8 @@ class KunenaUserSocials
         "value": "",
         "url": "https://www.flickr.com/photos/##VALUE##",
         "title": "COM_KUNENA_MYPROFILE_FLICKR",
-        "nourl": 0
+        "nourl": 0,
+        "fa": "fa-brands fa-flickr"
     },
     "bebo": {
         "value": "",
@@ -556,7 +567,8 @@ class KunenaUserSocials
         "value": "",
         "url": "https://www.instagram.com/##VALUE##/",
         "title": "COM_KUNENA_MYPROFILE_INSTAGRAM",
-        "nourl": 0
+        "nourl": 0,
+        "fa": "fa-brands fa-instagram"
     },
     "qqsocial": {
         "value": "",
@@ -574,7 +586,8 @@ class KunenaUserSocials
         "value": "",
         "url": "##VALUE##",
         "title": "COM_KUNENA_MYPROFILE_WEIBO",
-        "nourl": 1
+        "nourl": 1,
+        "fa": "fa-brands fa-weibo"
     },
     "wechat": {
         "value": "",
@@ -586,37 +599,43 @@ class KunenaUserSocials
         "value": "",
         "url": "https://vk.com/##VALUE##",
         "title": "COM_KUNENA_MYPROFILE_VK",
-        "nourl": 0
+        "nourl": 0,
+        "fa": "fa-brands fa-vk"
     },
     "telegram": {
         "value": "",
         "url": "https://t.me/##VALUE##",
         "title": "COM_KUNENA_MYPROFILE_TELEGRAM",
-        "nourl": 0
+        "nourl": 0,
+        "fa": "fa-brands fa-telegram"
     },
     "apple": {
         "value": "",
         "url": "##VALUE##",
         "title": "COM_KUNENA_MYPROFILE_APPLE",
-        "nourl": 1
+        "nourl": 1,
+        "fa": "fa-brands fa-apple"
     },
     "vimeo": {
         "value": "",
         "url": "https://vimeo.com/##VALUE##",
         "title": "COM_KUNENA_MYPROFILE_VIMEO",
-        "nourl": 0
+        "nourl": 0,
+        "fa": "fa-brands fa-vimeo"
     },
     "whatsapp": {
         "value": "",
         "url": "https://wa.me/##VALUE##",
         "title": "COM_KUNENA_MYPROFILE_WHATSAPP",
-        "nourl": 0
+        "nourl": 0,
+        "fa": "fa-brands fa-whatsapp"
     },
     "youtube": {
         "value": "",
         "url": "https://www.youtube-nocookie.com/##VALUE##",
         "title": "COM_KUNENA_MYPROFILE_YOUTUBE",
-        "nourl": 0
+        "nourl": 0,
+        "fa": "fa-brands fa-youtube"
     },
     "ok": {
         "value": "",
@@ -628,19 +647,22 @@ class KunenaUserSocials
         "value": "",
         "url": "https://pinterest.com/##VALUE##",
         "title": "COM_KUNENA_MYPROFILE_PINTEREST",
-        "nourl": 0
+        "nourl": 0,
+        "fa": "fa-brands fa-pinterest"
     },
     "reddit": {
         "value": "",
         "url": "https://www.reddit.com/user/##VALUE##",
         "title": "COM_KUNENA_MYPROFILE_REDDIT",
-        "nourl": 0
+        "nourl": 0,
+        "fa": "fa-brands fa-reddit"
     },
     "bluesky_app": {
         "value": "",
         "url": "https://bsky.app/profile/##VALUE##.bsky.social",
         "title": "COM_KUNENA_MYPROFILE_BLUESKY_APP",
-        "nourl": 0
+        "nourl": 0,
+        "fa": "fa-brands fa-bluesky"
     }
 }')
             );
