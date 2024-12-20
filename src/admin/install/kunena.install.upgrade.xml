@@ -516,6 +516,11 @@
                 DROP IF EXISTS `bsky_app`;
             </query>
         </version>
+	<version version="6.4.0-RC1-DEV_2024-12-20"
+                 versiondate="2024-12-20"
+                 versionname="Internal">
+            <phpfile name="6.4.0-2024-12-20_add_fa_socials"/>
+	</version>	
         <version version="@kunenaversion@"
                  versiondate="@kunenaversiondate@"
                  versionname="@kunenaversionname@">
