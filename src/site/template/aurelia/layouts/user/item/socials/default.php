@@ -18,8 +18,10 @@ namespace Kunena\Forum\Site;
 $showAll = isset($this->showAll) ? $this->showAll : false;
 ?>
 <div class="inline float-end">
-    <?php /*foreach ($this->socials as $key => $social) {
-      <i class="fa-solid fa-house"></i>  
-    }*/
+    <?php foreach ($this->socials as $key => $social) {
+        if (isset($social->fa)) {
+            echo "<i class=\"{$social->fa}\"></i>";
+        }
+    }
     ?>
 </div>
