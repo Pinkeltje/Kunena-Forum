@@ -19,6 +19,7 @@ use Joomla\CMS\Uri\Uri;
 use Kunena\Forum\Libraries\Html\KunenaParser;
 use Kunena\Forum\Libraries\Route\KunenaRoute;
 use Joomla\CMS\Factory;
+use Joomla\CMS\Language\LanguageHelper;
 
 $this->wa->registerAndUseScript('ckeditor', 'media/kunena/core/js/ckeditor.js');
 $this->doc->addScriptOptions('com_kunena.ckeditor_config', $this->template->params->get('ckeditorcustomprefixconfigfile') . 'ckeditor_config.js');
@@ -29,6 +30,9 @@ $this->doc->addScriptOptions('com_kunena.localstorage', $this->template->params-
 
 $user = Factory::getApplication()->getIdentity();
 $userLanguage = $user->getParam('language', 'default');
+if (!LanguageHelper::exists($userLanguage)) { 
+   $userLanguage = 'default';
+}
 $joomlaLanguage = Factory::getApplication()->getLanguage()->getLocale();
 
 if ($userLanguage != 'default' && $userLanguage != 'active') {

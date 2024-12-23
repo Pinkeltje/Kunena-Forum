@@ -32,7 +32,7 @@
               title="COM_KUNENA_ICON_MERGED" src="user/merged.png"/>
         <icon id="10" name="cross" published="1" svg="remove" fa="times"
               title="COM_KUNENA_ICON_CROSS" src="user/cross.png"/>
-        <icon id="8" name="solved" published="1" svg="check" fa="check"
+        <icon id="8" name="solved" published="1" svg="check-circle" fa="check"
               title="COM_KUNENA_ICON_SOLVED"
               src="user/solved.png"/>
     </icons>

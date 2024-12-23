@@ -131,72 +131,65 @@ jQuery(document).ready(function ($) {
         }
 
         // Load topic icons by ajax request
-        $.ajax({
-            type: 'POST',
-            url: kurl_topicons_request,
-            async: true,
-            dataType: 'json',
-            data: {catid: catid}
-        })
-            .done(function (data) {
-                $('#iconset_topic_list').remove();
-                $('#iconset_topicList').remove();
+      $.ajax({
+    type: 'POST',
+    url: kurl_topicons_request,
+    async: true,
+    dataType: 'json',
+    data: {catid: catid}
+})
+.done(function (data) {
+    $('#iconset_topicList').remove();
 
-                const div_object = $('<div>', {'id': 'iconset_topic_list'});
+    const div_object = $('<div>', {'id': 'iconset_topicList'});
+    $('#iconset_inject').append(div_object);
 
-                $('#iconset_inject').append(div_object);
-
-                $.each(data, function (index, value) {
-                    if (value.type !== 'system') {
-                        if (value.id === 0) {
-                            var input = $('<input>', {
-                                type: 'radio',
-                                id: 'radio' + value.id,
-                                name: 'topic_emoticon',
-                                value: value.id
-                            }).prop('checked', true);
-                        } else {
-                            var input = $('<input>', {
-                                type: 'radio',
-                                id: 'radio' + value.id,
-                                name: 'topic_emoticon',
-                                value: value.id
-                            });
-                        }
-
-                        const span_object = $('<span>', {'class': 'kiconsel'}).append(input);
-
-                        if (Joomla.getOptions('com_kunena.kunena_topicicontype') === 'fa') {
-                            var label = $('<label>', {
-                                'class': 'radio inline',
-                                'for': 'radio' + value.id
-                            }).append($('<i>', {
-                                'class': 'fa glyphicon-topic fa-2x fa-' + value.fa,
-                                'border': '0',
-                                'al': ''
-                            }));
-                        } else if (Joomla.getOptions('com_kunena.kunena_topicicontype') === 'svg') {
-                            var label = $('<label>', {
-                                'class': 'radio inline',
-                                'for': 'radio' + value.id
-                            }).append($(value.svg));
-                        } else {
-                            var label = $('<label>', {
-                                'class': 'radio inline',
-                                'for': 'radio' + value.id
-                            }).append($('<img>', {'src': value.path, 'border': '0', 'al': ''}));
-                        }
-
-                        span_object.append(label);
-
-                        $('#iconset_topic_list').append(span_object);
-                    }
-                });
-            })
-            .fail(function () {
-                //TODO: handle the error of ajax request
+    $.each(data, function (index, value) {
+        if (value.type !== 'system') {
+            // Create input consistently for all icons
+            const input = $('<input>', {
+                type: 'radio',
+                id: 'radio' + value.id,
+                name: 'topic_emoticon',
+                value: value.id,
+                // Set first icon as checked by default
+                ...(index === 0 ? { checked: true } : {})
             });
 
+            // Create span with consistent class
+            const span_object = $('<span>', {'class': 'kiconsel'}).append(input);
+
+            // Create label consistently based on icon type
+            let label;
+            if (Joomla.getOptions('com_kunena.kunena_topicicontype') === 'fa') {
+                label = $('<label>', {
+                    'class': 'radio inline',
+                    'for': 'radio' + value.id
+                }).append($('<i>', {
+                    'class': 'fa glyphicon-topic fa-2x fa-' + value.fa,
+                    'border': '0',
+                    'al': ''
+                }));
+            } else if (Joomla.getOptions('com_kunena.kunena_topicicontype') === 'svg') {
+                label = $('<label>', {
+                    'class': 'radio inline',
+                    'for': 'radio' + value.id
+                }).append($(value.svg));
+            } else {
+                label = $('<label>', {
+                    'class': 'radio inline',
+                    'for': 'radio' + value.id
+                }).append($('<img>', {'src': value.path, 'border': '0', 'al': ''}));
+            }
+
+            span_object.append(label);
+            $('#iconset_topicList').append(span_object);
+        }
+    });
+})
+.fail(function () {
+    //TODO: handle the error of ajax request
+});
         // Load template text for the category by ajax request
         category_template_text = function cat_template_text() {
             return $.ajax({
