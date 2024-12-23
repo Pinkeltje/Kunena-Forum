@@ -64,6 +64,7 @@ HTMLHelper::_('bootstrap.tab');
 
 $topictemplate = !$this->config->pickup_category;
 $this->doc->addScriptOptions('com_kunena.ckeditor_emoticons', json_encode(KunenaParser::getEmoticons(0, 1, 0)));
+$this->doc->addScriptOptions('com_kunena.localstorage', $this->template->params->get('localstorage'));
 ?>
 <script>
     function localstorage() {

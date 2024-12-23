@@ -395,12 +395,14 @@ function dataFeed(opts, callback) {
 
 				},
                 mode: function (evt) {
-                    const cat = localStorage.getItem('copyKunenaeditor');
-
-                    if (cat) {
-                        evt.editor.setData(cat);
-                        localStorage.removeItem('copyKunenaeditor');
-                    }
+                    if (Joomla.getOptions('com_kunena.localstorage')) {
+						const cat = localStorage.getItem('copyKunenaeditor');
+	
+	                    if (cat) {
+	                        evt.editor.setData(cat);
+	                        localStorage.removeItem('copyKunenaeditor');
+	                    }
+					}
 
                     evt.editor.getCommand('polls').disable();
                 }

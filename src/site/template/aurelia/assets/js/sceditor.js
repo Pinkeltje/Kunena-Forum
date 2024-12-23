@@ -737,11 +737,13 @@ jQuery(document).ready(function ($) {
 		{
 			$('#form_submit_button').removeAttr("disabled");
 		} else {
-			const cat = localStorage.getItem('copyKunenaeditor');
-
-			if (cat) {
-				sceditor.instance(textarea).val(cat);
-				localStorage.removeItem('copyKunenaeditor');
+			if (Joomla.getOptions('com_kunena.localstorage')) {
+				const cat = localStorage.getItem('copyKunenaeditor');
+	
+				if (cat) {
+					sceditor.instance(textarea).val(cat);
+					localStorage.removeItem('copyKunenaeditor');
+				}
 			}
 		}
 
