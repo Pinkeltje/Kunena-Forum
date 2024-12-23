@@ -255,7 +255,7 @@ Text::script('COM_KUNENA_POLL_TITLE');
         <?php if ($this->selectcatlist !== false) : ?>
             <div class="form-group row">
                 <!-- Material input -->
-                <label for="inputCatlist" class="col-sm-2 col-form-label"><?php echo Text::_('COM_KUNENA_CATEGORY') ?></label>
+                <label for="postcatid" class="col-sm-2 col-form-label"><?php echo Text::_('COM_KUNENA_CATEGORY') ?></label>
                 <div class="col-md-10">
                     <div class="md-form mt-0">
                         <div class="controls"> <?php echo $this->selectcatlist ?> </div>
@@ -308,7 +308,7 @@ Text::script('COM_KUNENA_POLL_TITLE');
         <?php if (!empty($this->topicIcons)) : ?>
             <div class="form-group row" id="kpost-topicIcons">
                 <!-- Material input -->
-                <label for="inputIcon" class="col-sm-2 col-form-label"><?php echo Text::_('COM_KUNENA_GEN_TOPIC_ICON'); ?></label>
+                <p class="col-sm-2 col-form-label"><?php echo Text::_('COM_KUNENA_GEN_TOPIC_ICON'); ?></p>
                 <div class="col-md-10">
                     <div id="iconset_inject" class="controls controls-select">
                         <div id="iconset_topicList">
