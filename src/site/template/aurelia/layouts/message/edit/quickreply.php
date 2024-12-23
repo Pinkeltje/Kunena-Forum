@@ -231,9 +231,9 @@ if ($me->canDoCaptcha() && KunenaConfig::getInstance()->quickReply) {
                                                                                                                                                                                         endif; ?> value="<?php echo $message->displayField('subject'); ?>" />
                             </div>
                             <div class="form-group">
-                                <label class="col-md-12 control-label" style="padding:0;">
+                                <div class="col-md-12 control-label" style="padding:0;">
                                     <?php echo Text::_('COM_KUNENA_MESSAGE'); ?>:
-                                </label>
+                                </div>
                                 <?php if ($editor == 1) {
                                     echo $this->subLayout('Widget/Editor')->setLayout('wysibb_quick')->set('message', $this->message)->set('config', $config);
                                 } else {
