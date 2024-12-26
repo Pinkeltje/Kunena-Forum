@@ -118,6 +118,74 @@ jQuery(function ($) {
     // Remove any alert messages
     $('#alert_max_file').remove();
 });
+    $('#set-secure-all').on('click', function (e) {
+    e.preventDefault();
+
+    const child = $('#kattach-list').find('input');
+    const filesidtosetprivate = [];
+    const $this = $(this);
+
+    child.each(function (i, el) {
+        const elem = $(el);
+
+        if (!elem.attr('id').match("[a-z]{8}")) {
+            const fileid = elem.attr('id').match("[0-9]{1,8}");
+            filesidtosetprivate.push(fileid);
+        }
+    });
+
+    if (filesidtosetprivate.length !== 0) {
+        $.ajax({
+            url: Joomla.getOptions('com_kunena.kunena_upload_files_set_private') + '&files_id=' + JSON.stringify(filesidtosetprivate),
+            type: 'POST'
+        })
+        .done(function (data) {
+            // Update all individual private buttons
+            $('#files button').each(function() {
+                const $btn = $(this);
+                if ($btn.html().includes(Joomla.Text._('COM_KUNENA_EDITOR_INSERT_PRIVATE_ATTACHMENT'))) {
+                    $btn.removeClass('btn-primary')
+                       .addClass('btn-success')
+                       .prop('disabled', true)
+                       .html(Joomla.getOptions('com_kunena.icons.secure') + ' ' + 
+                            Joomla.Text._('COM_KUNENA_EDITOR_ATTACHMENT_IS_SECURED'));
+                    
+                    // Hide the corresponding insert button in the same container
+                    $btn.siblings('button').each(function() {
+                        const $siblingBtn = $(this);
+                        if ($siblingBtn.html().includes(Joomla.Text._('COM_KUNENA_EDITOR_INSERT')) ||
+                            $siblingBtn.html().includes(Joomla.Text._('COM_KUNENA_EDITOR_IN_MESSAGE'))) {
+                            $siblingBtn.hide();
+                        }
+                    });
+                }
+            });
+
+            // Update the set-secure-all button
+            $this.removeClass('btn-primary')
+                 .addClass('btn-success')
+                 .prop('disabled', true)
+                 .html(Joomla.getOptions('com_kunena.icons.secure') + ' ' + 
+                      Joomla.Text._('COM_KUNENA_EDITOR_ATTACHMENTS_ARE_SECURED'));
+
+            // Hide both insert and insert-all buttons
+            $('button').each(function() {
+                const $btn = $(this);
+                if ($btn.html().includes(Joomla.Text._('COM_KUNENA_EDITOR_INSERT')) ||
+                    $btn.html().includes(Joomla.Text._('COM_KUNENA_EDITOR_IN_MESSAGE')) ||
+                    $btn.attr('id') === 'insert-all') {
+                    $btn.hide();
+                }
+            });
+
+            // Explicitly hide the insert-all button
+            $('#insert-all').hide();
+        })
+        .fail(function () {
+            //TODO: handle the error of ajax request
+        });
+    }
+});
   $('#insert-all').on('click', function (e) {
     e.preventDefault();
 
