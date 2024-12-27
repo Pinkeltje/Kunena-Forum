@@ -105,10 +105,10 @@ if ($me->canDoCaptcha() && KunenaConfig::getInstance()->quickReply) {
                         <?php endif; ?>
 
                         <div class="form-group">
-                            <label for="kanonymous<?php echo \intval($message->id); ?>" class="col-md-12 control-label" style="padding:0;">
+                            <label for="subject<?php echo \intval($message->id); ?>" class="col-md-12 control-label" style="padding:0;">
                                 <?php echo Text::_('COM_KUNENA_GEN_SUBJECT'); ?>:
                             </label>
-                            <input type="text" id="subject" name="subject" class="form-control" maxlength="<?php echo $template->params->get('SubjectLengthMessage'); ?>" <?php
+                            <input type="text" id="subject<?php echo \intval($message->id); ?>" name="subject" class="form-control" maxlength="<?php echo $template->params->get('SubjectLengthMessage'); ?>" <?php
                                                                                                                                                                             if (!$config->allowChangeSubject && !$me->isModerator()) :
                                                                                                                                                                             ?>disabled<?php
                                                                                                                                                                                     endif; ?> value="<?php echo $message->displayField('subject'); ?>" />
@@ -222,10 +222,10 @@ if ($me->canDoCaptcha() && KunenaConfig::getInstance()->quickReply) {
                             <?php endif; ?>
 
                             <div class="form-group">
-                                <label for="kanonymous<?php echo \intval($message->id); ?>" class="col-md-12 control-label" style="padding:0;">
+                                <label for="subject<?php echo \intval($message->id); ?>" class="col-md-12 control-label" style="padding:0;">
                                     <?php echo Text::_('COM_KUNENA_GEN_SUBJECT'); ?>:
                                 </label>
-                                <input type="text" id="subject" name="subject" class="form-control" maxlength="<?php echo $template->params->get('SubjectLengthMessage'); ?>" <?php
+                                <input type="text" id="subject<?php echo \intval($message->id); ?>" name="subject" class="form-control" maxlength="<?php echo $template->params->get('SubjectLengthMessage'); ?>" <?php
                                                                                                                                                                                 if (!$config->allowChangeSubject && !$me->isModerator()) :
                                                                                                                                                                                 ?>disabled<?php
                                                                                                                                                                                         endif; ?> value="<?php echo $message->displayField('subject'); ?>" />
