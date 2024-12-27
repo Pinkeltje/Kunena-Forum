@@ -648,7 +648,7 @@ workspace/kunena/build/tmp)
 			<mapper type="flatten" />
 			<fileset dir="${kunena.site}">
 				<include name="**/${lang}.*.ini" />
-				<include name="**/${lang}.*.js" />
+				<include name="**/kunena_ckeditor.js" />
 			</fileset>
 		</copy>
 
