@@ -593,7 +593,9 @@ class UserController extends KunenaController
         $socials = KunenaUserSocials::getInstance($user->userid);
 
         foreach($socials as $key => $social) {
-            $socials->$key = $input->$method->get('social'.$key, '', 'string');
+            if ($input->$method->get('social'.$key, '', 'string') !== null) {
+                $socials->$key->value = $input->$method->get('social'.$key, '', 'string');
+            }
         }
 
         $socials->save();
