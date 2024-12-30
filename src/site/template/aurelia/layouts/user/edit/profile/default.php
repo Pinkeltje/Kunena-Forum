@@ -127,6 +127,22 @@ $this->addScript('assets/js/profile.js');
                 </span>
         </td>
     </tr>
+    
+    <?php foreach($this->socials as $key => $social): ?>    
+    	<tr>
+    		<td class="col-md-3">
+                <label for="personalText">
+                    <?php echo Text::_('COM_KUNENA_MYPROFILE_' . \strtoupper($key)); ?>
+                </label>
+            </td>         
+            <td>
+            	<input class="form-control hasTooltip" id="social<?php echo $key; ?>" type="text"
+                       maxlength="50"
+                       name="social<?php echo $key; ?>" value="<?php echo $this->escape($social->value); ?>"
+                       data-bs-toggle="tooltip" title="<?php echo Text::_('COM_KUNENA_MYPROFILE_' . \strtoupper($key) . '_DESC') ?>"/>    
+            </td>
+    	</tr>
+    <?php endforeach; ?>
 
     <?php if ($this->config->signature) :
         ?>
@@ -146,20 +162,5 @@ $this->addScript('assets/js/profile.js');
             </td>
         </tr>
     <?php endif; ?>
-    <?php foreach($this->socials as $key => $social): ?>    
-    	<tr>
-    		<td class="col-md-3">
-                <label for="personalText">
-                    <?php echo Text::_('COM_KUNENA_MYPROFILE_' . \strtoupper($key)); ?>
-                </label>
-            </td>         
-            <td>
-            	<input class="form-control hasTooltip" id="social<?php echo $key; ?>" type="text"
-                       maxlength="50"
-                       name="social<?php echo $key; ?>" value="<?php echo $this->escape($social->value); ?>"
-                       data-bs-toggle="tooltip" title="<?php echo Text::_('COM_KUNENA_MYPROFILE_' . \strtoupper($key) . '_DESC') ?>"/>    
-            </td>
-    	</tr>
-    <?php endforeach; ?>
     </tbody>
 </table>
