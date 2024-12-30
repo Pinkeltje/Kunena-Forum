@@ -17,7 +17,6 @@ namespace Kunena\Forum\Site;
 
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
-use Kunena\Forum\Libraries\Config\KunenaConfig;
 
 echo $this->subLayout('Widget/Datepicker');
 $this->addScript('assets/js/profile.js');
