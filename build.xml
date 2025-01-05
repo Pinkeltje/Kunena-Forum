@@ -638,7 +638,7 @@ workspace/kunena/build/tmp)
 			overwrite="true">
 			<mapper type="flatten" />
 			<fileset dir="${kunena.admin}">
-				<include name="**/*.ini" />
+				<include name="**/${lang}/*.ini" />
 			</fileset>
 		</copy>
 		<copy
@@ -647,8 +647,8 @@ workspace/kunena/build/tmp)
 			overwrite="true">
 			<mapper type="flatten" />
 			<fileset dir="${kunena.site}">
-				<include name="**/*.ini" />
-				<include name="**/kunena_ckeditor.js" />
+				<include name="**/${lang}/*.ini" />
+				<include name="**/${lang}/kunena_ckeditor.js" />
 			</fileset>
 		</copy>
 
