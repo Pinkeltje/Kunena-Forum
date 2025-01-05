@@ -23,7 +23,7 @@ use Kunena\Forum\Libraries\User\KunenaUserSocials;
 function kunena_640_2024_12_20_add_fa_socials($parent) { 
     $db     = Factory::getContainer()->get('DatabaseDriver');
     $query  = $db->createQuery()
-    ->select('socials')
+    ->select($db->quoteName(array('userid', 'socials')))
     ->from($db->quoteName('#__kunena_users'))
     ->where($db->quoteName('banned') . '= ' . $db->quote('1000-01-01 00:00:00')
         );
@@ -33,91 +33,91 @@ function kunena_640_2024_12_20_add_fa_socials($parent) {
     foreach($results as $result) {
         $socials = KunenaUserSocials::getInstance($result->userid, false);
         
-        if (isset($result->x_social)) {
+        if (isset($socials->x_social)) {
             $socials->x_social->fa = 'fa-brands fa-x-twitter';
         }
         
-        if (isset($result->facebook)) {
+        if (isset($socials->facebook)) {
             $socials->facebook->fa = 'fa-brands fa-facebook';
         }
         
-        if (isset($result->linkedin)) {
+        if (isset($socials->linkedin)) {
             $socials->linkedin->fa = 'fa-brands fa-linkedin';
         }
         
-        if (isset($result->linkedin_company)) {
+        if (isset($socials->linkedin_company)) {
             $socials->linkedin_company->fa = 'fa-brands fa-linkedin';
         }
         
-        if (isset($result->digg)) {
+        if (isset($socials->digg)) {
             $socials->digg->fa = 'fa-brands fa-digg';
         }
         
-        if (isset($result->skype)) {
+        if (isset($socials->skype)) {
             $socials->skype->fa = 'fa-brands fa-skype';
         }
         
-        if (isset($result->yim)) {
+        if (isset($socials->yim)) {
             $socials->yim->fa = 'fa-brands fa-yahoo';
         }
         
-        if (isset($result->google)) {
+        if (isset($socials->google)) {
             $socials->google->fa = 'fa-brands fa-google';
         }
         
-        if (isset($result->github)) {
+        if (isset($socials->github)) {
             $socials->github->fa = 'fa-brands fa-github';
         }
         
-        if (isset($result->microsoft)) {
+        if (isset($socials->microsoft)) {
             $socials->microsoft->fa = 'fa-brands fa-microsoft';
         }
         
-        if (isset($result->flickr)) {
+        if (isset($socials->flickr)) {
             $socials->flickr->fa = 'fa-brands fa-flickr';
         }
         
-        if (isset($result->instagram)) {
+        if (isset($socials->instagram)) {
             $socials->instagram->fa = 'fa-brands fa-instagram';
         }
         
-        if (isset($result->weibo)) {
+        if (isset($socials->weibo)) {
             $socials->weibo->fa = 'fa-brands fa-weibo';
         }
         
-        if (isset($result->vk)) {
+        if (isset($socials->vk)) {
             $socials->vk->fa = 'fa-brands fa-vk';
         }
         
-        if (isset($result->telegram)) {
+        if (isset($socials->telegram)) {
             $socials->telegram->fa = 'fa-brands fa-telegram';
         }
         
-        if (isset($result->apple)) {
+        if (isset($socials->apple)) {
             $socials->apple->fa = 'fa-brands fa-apple';
         }
         
-        if (isset($result->vimeo)) {
+        if (isset($socials->vimeo)) {
             $socials->vimeo->fa = 'fa-brands fa-vimeo';
         }
         
-        if (isset($result->whatsapp)) {
+        if (isset($socials->whatsapp)) {
             $socials->whatsapp->fa = 'fa-brands fa-whatsapp';
         }
         
-        if (isset($result->youtube)) {
+        if (isset($socials->youtube)) {
             $socials->youtube->fa = 'fa-brands fa-youtube';
         }
         
-        if (isset($result->pinterest)) {
+        if (isset($socials->pinterest)) {
             $socials->pinterest->fa = 'fa-brands fa-pinterest';
         }
         
-        if (isset($result->reddit)) {
+        if (isset($socials->reddit)) {
             $socials->reddit->fa = 'fa-brands fa-reddit';
         }
         
-        if (isset($result->bsky_app)) {
+        if (isset($socials->bsky_app)) {
             $socials->bluesky_app->fa = 'fa-brands fa-bluesky';
         }
         
