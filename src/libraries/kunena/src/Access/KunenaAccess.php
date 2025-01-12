@@ -842,7 +842,7 @@ jQuery(document).ready(function ($) {
             $query->where("u.id IN ({$userlist})");
 
             // Only send to users whose Joomla account is enabled to Receive System Emails
-            if (KunenaConfig::getInstance()->get('useSystemEmails')) {
+            if (KunenaConfig::getInstance()->useSystemEmails) {
                 $query->where("u.sendEmail = 1");
             }
 
