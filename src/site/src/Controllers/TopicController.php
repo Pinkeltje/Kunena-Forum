@@ -816,7 +816,7 @@ class TopicController extends KunenaController
             }
         }
 
-        if ($this->me->checkUserAllowedLinksImages()) {
+        if (!$this->me->checkUserAllowedLinksImages()) {
             $message->message = $this->removeLinksInMessage($message->message);
 
             if (!$message->message) {
@@ -1336,7 +1336,7 @@ class TopicController extends KunenaController
             $topic->subject = $fields['subject'];
         }
 
-        if ($this->me->checkUserAllowedLinksImages()) {
+        if (!$this->me->checkUserAllowedLinksImages()) {
             $message->message = $this->removeLinksInMessage($message->message);
 
             if (!$message->message) {
