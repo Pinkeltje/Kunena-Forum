@@ -298,7 +298,7 @@
             <query mode="silenterror">ALTER TABLE `#__kunena_users` DROP `socialshare`;</query>
         </version>
         <version version="6.4.0-RC3-DEV_2024-01-15"
-                 versiondate="2024-11-01"
+                 versiondate="2024-01-15"
                  versionname="Internal">
             <query mode="silenterror">UPDATE `#__kunena_users` SET `socials` = '{
     "x_social": {
@@ -501,8 +501,8 @@
             </query>
             <phpfile name="6.4.0-2024-11-02_move_users_socials"/>
         </version>
-        <version version="6.4.0-RC3-DEV_2024-01-15"
-                 versiondate="2024-11-02"
+        <version version="6.4.0-RC3-DEV_2024-01-16"
+                 versiondate="2024-01-16"
                  versionname="Internal">
             <query mode="silenterror">
             ALTER TABLE `#__kunena_users` 
