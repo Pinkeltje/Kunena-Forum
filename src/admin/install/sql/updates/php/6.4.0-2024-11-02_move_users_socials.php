@@ -12,7 +12,24 @@ defined('_JEXEC') or die();
 
 use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Text;
+use Joomla\Utilities\ArrayHelper;
 use Kunena\Forum\Libraries\User\KunenaUserSocials;
+
+/**
+ *  Handle the data by group of 100 lines
+ * 
+ * @param array $array
+ * @param integer $numRows
+ * @param integer $size
+ */
+function chunk($array, $numRows, $size) {
+    $result = array();
+    for ($i = 0; $i < $numRows; $i += $size) {
+        $result[] = array_slice($array, $i, $size);
+    }
+    
+    return $result['0'];
+}
 
 /**
  * @param $parent
@@ -23,15 +40,28 @@ use Kunena\Forum\Libraries\User\KunenaUserSocials;
  */
 function kunena_640_2024_11_02_move_users_socials($parent) {   
     $db     = Factory::getContainer()->get('DatabaseDriver');
+    
+    // Get the number of lines in table #__kunena_users    
     $query  = $db->createQuery()
         ->select('*')
         ->from($db->quoteName('#__kunena_users'))
         ->where($db->quoteName('banned') . '= ' . $db->quote('1000-01-01 00:00:00')
     );
     $db->setQuery($query);
-    $results = (array) $db->loadObjectList();
+    $db->execute();    
+    $numRows = $db->getNumRows(); 
     
-    foreach($results as $result) {
+    $query  = $db->createQuery()
+        ->select('*')
+        ->from($db->quoteName('#__kunena_users'))
+        ->where($db->quoteName('banned') . '= ' . $db->quote('1000-01-01 00:00:00')
+    );
+    $db->setQuery($query);
+    $db->execute();
+    $dataResults = (array) $db->loadAssocList();
+    
+    foreach (chunk($dataResults, $numRows, 100) as $line) {
+        $result = ArrayHelper::toObject($line);
         $socials = KunenaUserSocials::getInstance($result->userid, false);
         
         if (isset($result->x_social)) {
