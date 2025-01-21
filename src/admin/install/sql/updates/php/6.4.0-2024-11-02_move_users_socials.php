@@ -43,7 +43,7 @@ function kunena_640_2024_11_02_move_users_socials($parent) {
     
     // Get the number of lines in table #__kunena_users    
     $query  = $db->createQuery()
-        ->select('*')
+        ->select(array('userid', 'banned'))
         ->from($db->quoteName('#__kunena_users'))
         ->where($db->quoteName('banned') . '= ' . $db->quote('1000-01-01 00:00:00')
     );
@@ -52,7 +52,7 @@ function kunena_640_2024_11_02_move_users_socials($parent) {
     $numRows = $db->getNumRows(); 
     
     $query  = $db->createQuery()
-        ->select('*')
+        ->select($db->quoteName(array('userid','banned','bebo','digg','telegram','vk','microsoft','skype','x_social','facebook','myspace','google','github','linkedin','linkedin_company','instagram','qqsocial','blogspot','youtube','reddit','bsky_app','flickr','apple','qzone','vimeo','whatsapp','weibo','wechat','yim','pinterest','ok')))
         ->from($db->quoteName('#__kunena_users'))
         ->where($db->quoteName('banned') . '= ' . $db->quote('1000-01-01 00:00:00')
     );
