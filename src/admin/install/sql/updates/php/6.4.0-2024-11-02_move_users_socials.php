@@ -93,7 +93,7 @@ function kunena_640_2024_11_02_move_users_socials($parent) {
         }
         
         if (isset($result->yim)) {
-            $socials->yim->value = $result->skype;
+            $socials->yim->value = $result->yim;
         }
         
         if (isset($result->google)) {
