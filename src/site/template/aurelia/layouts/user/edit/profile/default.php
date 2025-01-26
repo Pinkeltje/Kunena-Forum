@@ -137,7 +137,7 @@ $this->addScript('assets/js/profile.js');
             </td>         
             <td>
             	<input class="form-control hasTooltip" id="social<?php echo $key; ?>" type="text"
-                       maxlength="50"
+                       maxlength="100"
                        name="social<?php echo $key; ?>" value="<?php echo $this->escape($social->value); ?>"
                        data-bs-toggle="tooltip" title="<?php echo Text::_('COM_KUNENA_MYPROFILE_' . \strtoupper($key) . '_DESC') ?>"/>    
             </td>

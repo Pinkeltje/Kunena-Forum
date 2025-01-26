@@ -545,7 +545,7 @@ class KunenaUserSocials
     },
     "flickr": {
         "value": "",
-        "url": "https://www.flickr.com/photos/##VALUE##",
+        "url": "https://www.flickr.com/##VALUE##",
         "title": "COM_KUNENA_MYPROFILE_FLICKR",
         "nourl": 0,
         "fa": "fa-brands fa-flickr"
@@ -619,7 +619,7 @@ class KunenaUserSocials
     },
     "youtube": {
         "value": "",
-        "url": "https://www.youtube-nocookie.com/##VALUE##",
+        "url": "https://www.youtube.com/##VALUE##",
         "title": "COM_KUNENA_MYPROFILE_YOUTUBE",
         "nourl": 0,
         "fa": "fa-brands fa-youtube"
@@ -646,7 +646,7 @@ class KunenaUserSocials
     },
     "bluesky_app": {
         "value": "",
-        "url": "https://bsky.app/profile/##VALUE##.bsky.social",
+        "url": "https://bsky.app/##VALUE##",
         "title": "COM_KUNENA_MYPROFILE_BLUESKY_APP",
         "nourl": 0,
         "fa": "fa-brands fa-bluesky"
