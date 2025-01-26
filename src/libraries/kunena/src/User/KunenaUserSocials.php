@@ -39,7 +39,6 @@ use Kunena\Forum\Libraries\Error\KunenaError;
  * @property string  $microsoft
  * @property string  $blogspot
  * @property string  $flickr
- * @property string  $bebo
  * @property string  $instagram
  * @property string  $qqsocial
  * @property string  $qzone
@@ -137,12 +136,6 @@ class KunenaUserSocials
      * @since  Kunena 6.4.0
      */
     public $flickr = '';
-
-    /**
-     * @var    string  Bebo
-     * @since  Kunena 6.4.0
-     */
-    public $bebo = '';
 
     /**
      * @var    string  Instagram
@@ -556,12 +549,6 @@ class KunenaUserSocials
         "title": "COM_KUNENA_MYPROFILE_FLICKR",
         "nourl": 0,
         "fa": "fa-brands fa-flickr"
-    },
-    "bebo": {
-        "value": "",
-        "url": "https://www.bebo.com/Profile.jsp?MemberId=##VALUE##",
-        "title": "COM_KUNENA_MYPROFILE_BEBO",
-        "nourl": 0
     },
     "instagram": {
         "value": "",

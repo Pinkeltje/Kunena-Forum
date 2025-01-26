@@ -390,12 +390,6 @@
         "nourl": 0,
         "fa": "fa-brands fa-flickr"
     },
-    "bebo": {
-        "value": "",
-        "url": "https://www.bebo.com/Profile.jsp?MemberId=##VALUE##",
-        "title": "COM_KUNENA_MYPROFILE_BEBO",
-        "nourl": 0
-    },
     "instagram": {
         "value": "",
         "url": "https://www.instagram.com/##VALUE##/",
