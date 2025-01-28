@@ -295,7 +295,7 @@
                 DROP IF EXISTS `delicious`;
             </query>
             <phpfile name="6.4.0-2024-10-21_update_configuration"/>
-            <query mode="silenterror">ALTER TABLE `#__kunena_users` DROP `socialshare`;</query>
+            <query mode="silenterror">ALTER TABLE `#__kunena_users` DROP IF EXISTS `socialshare`;</query>
         </version>
         <version version="6.4.0-RC3-DEV_2025-01-15"
                  versiondate="2025-01-15"
