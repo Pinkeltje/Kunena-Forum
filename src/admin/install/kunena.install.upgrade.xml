@@ -297,7 +297,7 @@
             <phpfile name="6.4.0-2024-10-21_update_configuration"/>
             <query mode="silenterror">ALTER TABLE `#__kunena_users` DROP IF EXISTS `socialshare`;</query>
         </version>
-        <version version="6.4.0-RC3-DEV"
+        <version version="6.4.0-RC2-DEV"
                  versiondate="2025-01-15"
                  versionname="Internal">
             <query mode="silenterror">UPDATE `#__kunena_users` SET `socials` = '{
