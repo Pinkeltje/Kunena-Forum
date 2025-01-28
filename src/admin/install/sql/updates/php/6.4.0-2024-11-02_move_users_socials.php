@@ -40,7 +40,12 @@ function chunk($array, $numRows, $size) {
  */
 function kunena_640_2024_11_02_move_users_socials($parent) {   
     $db     = Factory::getContainer()->get('DatabaseDriver');
-    
+
+    // Check if the state of update if from K6.3
+    $db->setQuery("SELECT state FROM #__kunena_version ORDER BY `id` DESC", 0, 1);
+    $updateState = $db->loadResult();
+
+    if (!empty($updateState) && version_compare($installed, '6.4.0-BETA1', '<')) {
     // Get the number of lines in table #__kunena_users    
     $query  = $db->createQuery()
         ->select(array('userid', 'banned'))
@@ -180,4 +185,5 @@ function kunena_640_2024_11_02_move_users_socials($parent) {
     }
 
 	return array('action' => '', 'name' => Text::_('COM_KUNENA_INSTALL_640_UPDATE_USERS_SOCIALS'), 'success' => true);
+    }
 }
