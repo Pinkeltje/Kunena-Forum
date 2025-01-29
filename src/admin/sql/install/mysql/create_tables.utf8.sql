@@ -447,7 +447,7 @@ CREATE TABLE IF NOT EXISTS `#__kunena_users`
     `uhits`            int(11)      NULL     default '0',
     `personalText`     tinytext     NULL,
     `gender`           tinyint(4)   NOT NULL default '0',
-    `birthdate`        date         NULL     DEFAULT NULL,
+    `birthdate`        date         NULL     DEFAULT '1000-01-01',
     `location`         varchar(50)  NULL,
     `websitename`      varchar(50)  NULL,
     `websiteurl`       varchar(50)  NULL,

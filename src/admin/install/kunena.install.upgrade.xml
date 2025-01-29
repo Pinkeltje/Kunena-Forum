@@ -531,6 +531,7 @@
                 DROP IF EXISTS `reddit`,
                 DROP IF EXISTS `bsky_app`;
             </query>
+            <query mode="silenterror">ALTER TABLE `#__kunena_users` MODIFY birthdate date         NULL     DEFAULT '1000-01-01';</query>
         </version>
         <version version="@kunenaversion@"
                  versiondate="@kunenaversiondate@"
