@@ -1866,7 +1866,7 @@ class KunenaUser
                 return '<span class="kicon-profile kicon-profile-gender-' . $gender . '" data-bs-toggle="tooltip" data-placement="right" title="' . $title . '">' . KunenaIcons::$gender() . '</span>';
                 break;
             case 'birthdate':
-                if (!$this->birthdate || $this->birthdate == '0001-01-01') {
+                if (!$this->birthdate || $this->birthdate == '1000-01-01') {
                     return false;
                 }
 

@@ -133,7 +133,7 @@ class UserController extends FormController
 
                 $birthdate = $date->format('Y-m-d');
             } else {
-                $birthdate = '0001-01-01';
+                $birthdate = '1000-01-01';
             }
 
             $user->birthdate    = $birthdate;
