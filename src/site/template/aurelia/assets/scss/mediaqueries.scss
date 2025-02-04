@@ -17,6 +17,12 @@
 
 /* Smartphones */
 @media (max-width: 480px) {
+  #kunena.layout .table th, #kunena.layout .table td {
+	display: grid;
+}
+  #kunena.layout #editUser .form-control, #kunena.layout #editUser .custom-select, #kunena.layout #editprofile .form-control, #kunena.layout #editprofile .custom-select, #kunena.layout #editavatar .form-control, #kunena.layout #editavatar .custom-select, #kunena.layout #editsettings .form-control, #kunena.layout #editsettings .custom-select {
+	width: 100%!important;
+}
   .knav-collapse {
     transform: translate3d(0, 0, 0);
   }
