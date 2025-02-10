@@ -73,6 +73,8 @@ function kunena_640_2024_11_02_move_users_socials($parent) {
     $db->setQuery($query);
     $db->execute();    
     $numRows = $db->getNumRows(); 
+    
+    $listSocialsColumns[] = 'userid'; 
         
     $query  = $db->createQuery()
     ->select($db->quoteName($listSocialsColumns))
