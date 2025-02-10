@@ -6,7 +6,7 @@
  * @package         Kunena.Plugins
  * @subpackage      System
  *
- * @copyright       Copyright (C) 2008 - @currentyear@ Kunena Team. All rights reserved.
+ * @copyright       Copyright (C) 2008 - 2025 Kunena Team. All rights reserved.
  * @license         https://www.gnu.org/copyleft/gpl.html GNU/GPL
  * @link            https://www.kunena.org
  **/
@@ -19,11 +19,14 @@ use Joomla\CMS\Filter\InputFilter;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Plugin\CMSPlugin;
 use Joomla\CMS\Plugin\PluginHelper;
+use Joomla\CMS\Date\Date;
+use Joomla\CMS\User\UserFactoryInterface;
 use Kunena\Forum\Libraries\Controller\Application\Display;
 use Kunena\Forum\Libraries\Factory\KunenaFactory;
 use Kunena\Forum\Libraries\Forum\KunenaForum;
 use Kunena\Forum\Libraries\KunenaInstaller;
 use Kunena\Forum\Libraries\Template\KunenaTemplate;
+use Kunena\Forum\Libraries\User\KunenaBan;
 
 /**
  * Class plgSystemKunena
@@ -32,6 +35,14 @@ use Kunena\Forum\Libraries\Template\KunenaTemplate;
  */
 class PlgSystemKunena extends CMSPlugin
 {
+    /**
+     * Application object
+     *
+     * @var    \Joomla\CMS\Application\CMSApplication
+     * @since  Kunena 6.0
+     */
+    protected $app;
+
     /**
      * @param   object  $subject  Subject
      * @param   array   $config   Config
@@ -67,13 +78,15 @@ class PlgSystemKunena extends CMSPlugin
 
         parent::__construct($subject, $config);
 
-        $app    = Factory::getApplication();
-        $format = $app->input->getCmd('format');
+        // Initialize application object
+        $this->app = Factory::getApplication();
+        
+        $format = $this->app->input->getCmd('format');
 
         require_once JPATH_LIBRARIES . '/kunena/External/autoload.php';
 
         if (!empty($format) && $format != 'html') {
-            if ($app->scope == 'com_kunena') {
+            if ($this->app->scope == 'com_kunena') {
                 if (!PluginHelper::isEnabled('kunena', 'powered')) {
                     $styles = <<<EOF
 		.layout#kunena + div { display: block !important;}
@@ -85,15 +98,101 @@ EOF;
             }
 
             if (!method_exists(Display::class, 'poweredBy')) {
-                Factory::getApplication()->enqueueMessage(
-                	'Please Buy Official powered by remover plugin on: https://www.kunena.org/downloads',
-                	'notice'
+                $this->app->enqueueMessage(
+                    'Please Buy Official powered by remover plugin on: https://www.kunena.org/downloads',
+                    'notice'
                 );
             }
         }
 
         // ! Always load language after parent::construct else the name of plugin isn't yet set
         $this->loadLanguage('plg_system_kunena.sys');
+    }
+
+/**
+     * After initialise.
+     *
+     * @return  void
+     *
+     * @since   Kunena 6.0
+     */
+    public function onAfterInitialise()
+    {
+        // Add ban check
+        if (!$this->app->isClient('administrator') && !$this->app->isClient('api')) {
+            $timestamp = time();
+            $lastCheck = $this->params->get('ban_check_last', 0);
+            
+            if ($timestamp - $lastCheck >= 3600) {
+                try {
+                    $this->cleanExpiredBans();
+                    
+                    // Update last check time
+                    $this->params->set('ban_check_last', $timestamp);
+                    
+                    // Save the parameters
+                    $db = Factory::getContainer()->get('DatabaseDriver');
+                    $query = $db->getQuery(true)
+                        ->update($db->quoteName('#__extensions'))
+                        ->set($db->quoteName('params') . ' = ' . $db->quote($this->params->toString()))
+                        ->where([
+                            $db->quoteName('type') . ' = ' . $db->quote('plugin'),
+                            $db->quoteName('folder') . ' = ' . $db->quote('system'),
+                            $db->quoteName('element') . ' = ' . $db->quote('kunena')
+                        ]);
+                    
+                    $db->setQuery($query);
+                    $db->execute();
+                } catch (\Exception $e) {
+                    $this->app->enqueueMessage($e->getMessage(), 'error');
+                }
+            }
+        }
+    }
+    /**
+     * Clean expired bans from the system
+     *
+     * @return  void
+     *
+     * @since   Kunena 6.0
+     */
+    protected function cleanExpiredBans(): void
+    {
+        $db = Factory::getContainer()->get('DatabaseDriver');
+        $now = new Date();
+        
+        // Find expired site-wide bans
+        $query = $db->getQuery(true)
+            ->select('b.*')
+            ->from($db->quoteName('#__kunena_users_banned', 'b'))
+            ->where($db->quoteName('b.expiration') . ' <= ' . $db->quote($now->toSql()))
+            ->where($db->quoteName('b.blocked') . ' = 1')
+            ->where($db->quoteName('b.expiration') . ' != ' . $db->quote('9999-12-31 23:59:59'));
+            
+        $db->setQuery($query);
+        $expiredBans = $db->loadObjectList();
+        
+        foreach ($expiredBans as $ban) {
+            // Unblock user in Joomla
+            $user = Factory::getContainer()->get(UserFactoryInterface::class)->loadUserById($ban->userid);
+            if ($user && $user->block) {
+                $user->block = 0;
+                $user->save();
+            }
+            
+            // Update Kunena user profile
+            $profile = KunenaFactory::getUser($ban->userid);
+            $profile->banned = null;
+            $profile->save(true);
+            
+            // Update ban record
+            $banInstance = KunenaBan::getInstance($ban->id);
+            if ($banInstance->exists()) {
+                $banInstance->addComment('Automatically unbanned by system');
+                $banInstance->modified_time = $now->toSql();
+                $banInstance->save(true);
+            }
+        }
     }
 
     /**
@@ -197,9 +296,9 @@ EOF;
         // Old version detected: emulate failed installation
         $app = Factory::getApplication();
         $app->enqueueMessage(sprintf(
-        	'Sorry, it is not possible to downgrade Kunena %s to version %s.',
-        	KunenaForum::version(),
-        	$manifest->version
+            'Sorry, it is not possible to downgrade Kunena %s to version %s.',
+            KunenaForum::version(),
+            $manifest->version
         ), 'warning');
         $app->enqueueMessage(Text::_('JLIB_INSTALLER_ABORT_COMP_INSTALL_CUSTOM_INSTALL_FAILURE'), 'error');
         $app->enqueueMessage(Text::sprintf('COM_INSTALLER_MSG_UPDATE_ERROR', Text::_('COM_INSTALLER_TYPE_TYPE_' . strtoupper($type))), 'error');
@@ -226,7 +325,6 @@ EOF;
      */
     protected function runJoomlaContentEvent(string &$text, object $params, $page = 0)
     {
-
         PluginHelper::importPlugin('content');
 
         $row       = new stdClass();
