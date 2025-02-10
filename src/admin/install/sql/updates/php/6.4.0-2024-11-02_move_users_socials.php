@@ -74,29 +74,31 @@ function kunena_640_2024_11_02_move_users_socials($parent) {
     $db->execute();    
     $numRows = $db->getNumRows(); 
     
-    $listSocialsColumns[] = 'userid'; 
-        
-    $query  = $db->createQuery()
-    ->select($db->quoteName($listSocialsColumns))
-        ->from($db->quoteName('#__kunena_users'))
-        ->where($db->quoteName('banned') . '= ' . $db->quote('1000-01-01 00:00:00')
-    );
-
-    $db->setQuery($query);
-    $db->execute();
-    $dataResults = (array) $db->loadAssocList();
-        
-    foreach (chunk($dataResults, $numRows, 100) as $line) {
-        $result = ArrayHelper::toObject($line);
-        $socials = KunenaUserSocials::getInstance($result->userid, false);
-        
-        foreach ($columsSocialsByDefault as $socialColumn) {
-            if (isset($result->$socialColumn) && !empty($result->$socialColumn)) {
-                $socials->$socialColumn->value = $result->$socialColumn;
-            }
-        }
+    if ($numRows > 0) {    
+        $listSocialsColumns[] = 'userid'; 
             
-        $socials->save();
+        $query  = $db->createQuery()
+        ->select($db->quoteName($listSocialsColumns))
+            ->from($db->quoteName('#__kunena_users'))
+            ->where($db->quoteName('banned') . '= ' . $db->quote('1000-01-01 00:00:00')
+        );
+    
+        $db->setQuery($query);
+        $db->execute();
+        $dataResults = (array) $db->loadAssocList();
+            
+        foreach (chunk($dataResults, $numRows, 100) as $line) {
+            $result = ArrayHelper::toObject($line);
+            $socials = KunenaUserSocials::getInstance($result->userid, false);
+            
+            foreach ($columsSocialsByDefault as $socialColumn) {
+                if (isset($result->$socialColumn) && !empty($result->$socialColumn)) {
+                    $socials->$socialColumn->value = $result->$socialColumn;
+                }
+            }
+                
+            $socials->save();
+        }
     }
     
     return array('action' => '', 'name' => Text::_('COM_KUNENA_INSTALL_640_UPDATE_USERS_SOCIALS'), 'success' => true);
