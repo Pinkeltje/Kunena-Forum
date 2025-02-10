@@ -47,7 +47,7 @@ function kunena_640_2024_11_02_move_users_socials($parent) {
     $db->setQuery("SHOW COLUMNS FROM `#__kunena_users`");
     $columnsKunenaUsers = $db->loadObjectList();
     
-    $columsSocialsByDefault = ['x_social', 'facebook', 'myspace', 'linkedin', 'linkedin_company', 'digg', 'skype', 'yim', 'google', 'github', 'microsoft', 'blogspot', 'flickr', 'bebo', 'instagram', 'qqsocial', 'qzone', 'weibo', 'wechat', 'vk', 'telegram', 'apple', 'vimeo', 'whatsapp', 'youtube', 'ok', 'pinterest', 'reddit', 'bsky_app'];
+    $columsSocialsByDefault = ['x_social', 'facebook', 'myspace', 'linkedin', 'linkedin_company', 'digg', 'skype', 'yim', 'google', 'github', 'microsoft', 'blogspot', 'flickr', 'bebo', 'instagram', 'qqsocial', 'qzone', 'weibo', 'wechat', 'vk', 'telegram', 'apple', 'vimeo', 'whatsapp', 'youtube', 'ok', 'pinterest', 'reddit', 'bluesky_app'];
     $columsToAvoid = ['userid', 'status', 'status_text', 'view', 'signature', 'moderator', 'banned', 'ordering', 'posts', 'avatar', 'timestamp', 'karma', 'group_id', 'uhits', 'personalText', 'gender', 'birthdate', 'location', 'websitename', 'websiteurl', 'rank', 'hideEmail', 'showOnline', 'canSubscribe', 'userListtime', 'thankyou', 'ip', 'socials'];
     $columsSocialsInTable = [];
     

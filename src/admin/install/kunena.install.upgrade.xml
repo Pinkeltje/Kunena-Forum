@@ -297,6 +297,13 @@
             <phpfile name="6.4.0-2024-10-21_update_configuration"/>
             <query mode="silenterror">ALTER TABLE `#__kunena_users` DROP IF EXISTS `socialshare`;</query>
         </version>
+        <version version="6.4.0-RC1-DEV"
+                 versiondate="2024-12-15"
+                 versionname="Internal">
+            <query mode="silenterror">
+            ALTER TABLE `#__kunena_users` CHANGE `bsky_app` `bluesky_app` VARCHAR(75) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL; 
+            </query>
+        </version>         
         <version version="6.4.0-RC2-DEV"
                  versiondate="2025-01-15"
                  versionname="Internal">
@@ -529,7 +536,7 @@
                 DROP IF EXISTS `ok`,
                 DROP IF EXISTS `pinterest`,
                 DROP IF EXISTS `reddit`,
-                DROP IF EXISTS `bsky_app`;
+                DROP IF EXISTS `bluesky_app`;
             </query>
             <query mode="silenterror">ALTER TABLE `#__kunena_users` MODIFY birthdate date         NULL     DEFAULT '1000-01-01';</query>
         </version>
