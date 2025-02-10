@@ -2,8 +2,8 @@
 <!DOCTYPE extension>
 <extension version="2.5" type="plugin" group="system" method="upgrade">
     <name>plg_system_kunena</name>
-    <version>6.4.0-RC3</version>
-    <creationDate>2025-01-31</creationDate>
+    <version>@kunenaversion@</version>
+    <creationDate>@kunenaversiondate@</creationDate>
     <author>Kunena Team</author>
     <authorEmail>Kunena@kunena.org</authorEmail>
     <authorUrl>https://www.kunena.org</authorUrl>
@@ -11,7 +11,7 @@
     <license>GNU/GPLv3 or later</license>
     <description>PLG_SYSTEM_KUNENA_DESC</description>
     <namespace>Kunena\Forum\Plugin\System\Kunena</namespace>
-    <changelogurl>https://update.kunena.org/changelog/6.4.0-RC3.xml</changelogurl>
+    <changelogurl>@kunenachangelog@</changelogurl>
     <scriptfile>script.php</scriptfile>
     <files>
         <filename plugin="kunena">kunena.php</filename>
