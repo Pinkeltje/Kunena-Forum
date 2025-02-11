@@ -38,15 +38,15 @@ function kunena_640_2025_02_11_clean_configuration($parent) {
 	}
 	
 	if (isset($config->board_offline)) {	    
-	    unset($config->boardOffline);
+	    unset($config->board_offline);
 	}
 	
 	if (isset($config->offline_message)) {	    
-	    unset($config->offlineMessage);
+	    unset($config->offline_message);
 	}
 	
 	if (isset($config->userlist_posts)) {    
-	    unset($config->offlineMessage);
+	    unset($config->userlist_posts);
 	}
 	
 	if (isset($config->userlist_karma)) {	    
