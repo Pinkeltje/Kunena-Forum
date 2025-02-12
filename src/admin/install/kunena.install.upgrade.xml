@@ -543,7 +543,7 @@
         <version version="6.4.0-RC4-DEV"
                  versiondate="2025-01-16"
                  versionname="Internal">
-            <phpfile name="6.4.0-2024-11-02_clean_configuration"/>
+            <phpfile name="6.4.0-2025-02-11_clean_configuration"/>
         </version>
         <version version="@kunenaversion@"
                  versiondate="@kunenaversiondate@"
