@@ -217,8 +217,8 @@ use Kunena\Forum\Libraries\Error\KunenaError;
  * @property boolean $attachmentUtf8
  * @property boolean $autoEmbedSoundcloud
  * @property string  $emailHeader
- * @property integer $emailHeadersizex
- * @property integer $emailHeadersizey
+ * @property integer $emailHeaderSizeX
+ * @property integer $emailHeaderSizeY
  * @property boolean $userStatus
  * @property boolean $signature
  * @property boolean $personal

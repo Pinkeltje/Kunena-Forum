@@ -25,32 +25,34 @@ use Kunena\Forum\Libraries\Factory\KunenaFactory;
 function kunena_640_2025_02_11_clean_configuration($parent) {
 	$config = KunenaFactory::getConfig();
 	 
-	if (isset($config->emailHeadersizey)) {    
-	    unset($config->emailHeadersizey);
-	}
+	$listConfigParams = ['boardTitle', 'email', 'boardOffline', 'offlineMessage', 'enableRss', 'threadsPerPage', 'messagesPerPage', 'messagesPerPageSearch', 'showHistory', 'historyLimit', 'showNew', 'disableEmoticons', 'template', 'showAnnouncement', 
+	    'avatarOnCategory', 'showChildCatIcon', 'rteWidth', 'rteHeight', 'enableForumJump', 'reportMsg', 'username', 'askEmail', 'showEmail', 'showUserStats', 'showKarma', 'userEdit', 'userEditTime', 'userEditTimeGrace', 'editMarkup', 'allowSubscriptions',
+	    'subscriptionsChecked', 'allowFavorites',   'maxSig',   'regOnly',   'pubWrite',   'floodProtection',   'mailModerators', 'mailAdministrators',    'captcha',   'mailFull',   'allowAvatarUpload',   'allowAvatarGallery', 'avatarQuality',
+	    'avatarSize',   'imageHeight',   'imageWidth',   'imageSize',    'fileTypes',   'fileSize',   'showRanking', 'rankImages',   'userlistRows',   'userlistOnline',   'userlistAvatar',   'userlistPosts',   'userlistKarma', 'userlistEmail',
+	    'userlistJoinDate',   'userlistLastVisitDate',   'userlistUserHits',   'latestCategory',   'showStats',   'showWhoIsOnline',   'showGenStats',   'showPopUserStats','popUserCount',   'showPopSubjectStats',   'popSubjectCount',
+	    'showSpoilerTag',   'showVideoTag',   'showEbayTag',   'trimLongUrls',   'trimLongUrlsFront', 'trimLongUrlsBack',   'autoEmbedYoutube',   'autoEmbedEbay',   'ebayLanguageCode',   'sessionTimeOut',   'highlightCode',    'rssType',    'rssTimeLimit', 
+	    'rssLimit',     'rssIncludedCategories',    'rssExcludedCategories',    'rssSpecification',   'rssAllowHtml',    'rssAuthorFormat',   'rssAuthorInTitle',   'rssWordCount',  'rssOldTitles',   'rssCache',    'defaultPage',    'defaultSort',   'sef',   'showImgForGuest',   'showFileForGuest',   'pollNbOptions',   'pollAllowVoteOne',   'pollEnabled',   'popPollsCount',   'showPopPollStats', 'pollTimeBtVotes',   'pollNbVotesByUser',   'pollResultsUserslist',   'allowUserEditPoll',    'maxPersonalText',    'orderingSystem',    'postDateFormat',    'postDateFormatHover',   'hideIp',    'imageTypes',   'checkMimeTypes',    'imageMimeTypes',    'imageQuality',   'thumbHeight',   'thumbWidth',    'hideUserProfileInfo',   'boxGhostMessage',   'userDeleteMessage',   'latestCategoryIn',   'topicIcons',
+	    'debug',   'catsAutoSubscribed',   'showBannedReason',   'showThankYou',   'showPopThankYouStats',   'popThanksCount',   'modSeeDeleted',    'bbcodeImgSecure',
+	    'listCatShowModerators',   'lightbox',   'showListTime',   'showSessionType',   'showSessionStartTime',   'userlistAllowed',   'userlistCountUsers',   'enableThreadedLayouts',
+	    'categorySubscriptions',    'topicSubscriptions',   'pubProfile',   'thankYouMax',   'emailRecipientCount',    'emailRecipientPrivacy',    'emailVisibleAddress',   'captchaPostLimit',
+	    'imageUpload',    'fileUpload',    'topicLayout',   'timeToCreatePage',   'showImgFilesManageProfile',   'holdNewUsersPosts',
+	    'holdGuestPosts',   'attachmentLimit',   'pickupCategory',    'articleDisplay',   'sendEmails',   'fallbackEnglish',   'cache',   'cacheTime',
+	    'ebayAffiliateId',   'ipTracking',    'rssFeedBurnerUrl',   'autoLink',   'accessComponent',   'statsLinkAllowed',   'superAdminUserlist',   'attachmentProtection',
+	    'categoryIcons',   'avatarCrop',   'userReport',   'searchTime',   'teaser',   'ebayLanguage',    'ebayApiKey',    'ebayCertId',
+	    'blueskyappHandleOfApp',    'blueskyappPasswordOfApp',    'XConsumerKey',    'XConsumerSecret',   'allowChangeSubject',   'maxLinks',   'readOnly',   'ratingEnabled',
+	    'urlSubjectTopic',   'logModeration',   'attachStart',   'attachEnd',    'googleMapApiKey',   'attachmentUtf8',   'autoEmbedSoundcloud',    'emailHeader',
+	    'userStatus',   'signature',   'personal',   'plainEmail',   'moderatorPermDelete',    'avatarTypes',
+	    'smartLinking',    'defaultAvatar',    'defaultAvatarSmall',    'stopForumSpamKey',   'quickReply',   'avatarEdit',    'activeMenuItem',   'mainMenuId',   'homeId',
+	    'indexId',   'moderatorsId',   'topicListId',   'miscId',   'profileId',   'searchId',   'custom_id',   'avatarType',
+	    'sefRedirect',   'allowEditPoll',   'useSystemEmails',   'autoEmbedInstagram',   'disableRe', 'email_sender_name', 'display_filename_attachment', 'new_users_prevent_post_url_images', 'minimal_user_posts_add_url_image',  'utmSource', 'moderator_id', 'plugins', 'emailHeaderSizeY', 'emailHeaderSizeX', 'profiler', 'pickup_category', 'privateMessage', 'datePickerFormat', 'sendMailUserBanned', 'mailBodyUserBanned'
+    ];
 	
-	if (isset($config->emailHeadersizex)) {	    
-	    unset($config->emailHeadersizex);
-	}
-	
-	if (isset($config->board_title)) {	    
-	    unset($config->board_title);
-	}
-	
-	if (isset($config->board_offline)) {	    
-	    unset($config->board_offline);
-	}
-	
-	if (isset($config->offline_message)) {	    
-	    unset($config->offline_message);
-	}
-	
-	if (isset($config->userlist_posts)) {    
-	    unset($config->userlist_posts);
-	}
-	
-	if (isset($config->userlist_karma)) {	    
-	    unset($config->userlist_karma);
+	foreach($config as $param => $val) {
+	    if ($param != 'id') {
+	        if (array_search($param, $listConfigParams) === false) {
+	            unset($config->$param);
+	        }
+	    }
 	}
 	
 	// Save configuration
