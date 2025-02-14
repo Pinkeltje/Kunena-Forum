@@ -91,8 +91,8 @@ class TopicListingUnreadDisplay extends ListDisplay
         }
 
         if (!$Itemid && $this->config->sefRedirect) {
-            if ($this->config->moderator_id) {
-                $itemidfix = $this->config->moderator_id;
+            if ($this->config->moderatorsId) {
+                $itemidfix = $this->config->moderatorsId;
             } else {
                 $menu      = $this->app->getMenu();
                 $getid     = $menu->getItem(KunenaRoute::getItemID("index.php?option=com_kunena&view=topics&layout=unread"));

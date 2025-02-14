@@ -249,6 +249,9 @@ use Kunena\Forum\Libraries\Error\KunenaError;
  * @property boolean $disableRe
  * @property boolean $utmSource
  * @property boolean $profiler
+ * @property string  $datePickerFormat
+ * @property boolean $sendMailUserBanned
+ * @property boolean $mailBodyUserBanned
  *
  * @since   Kunena 6.0
  */
@@ -1622,15 +1625,11 @@ class KunenaConfig
      */
     public $emailHeaderSizeX = 560;
 
-    public $moderator_id;
-
     /**
      * @var    boolean  enabling profiler into Kunena
      * @since  Kunena 6.0.0
      */
     public $profiler = 0;
-
-    public $pickup_category;
 
     /**
      * @var    boolean  enabling private message buildin into Kunena
@@ -1639,6 +1638,7 @@ class KunenaConfig
     public $privateMessage = 1;
 
     /**
+     * @var    string default format of the date in datepicker in forms
      * @since  Kunena 6.2.0
      */
     public $datePickerFormat = 'mm/dd/yyyy';

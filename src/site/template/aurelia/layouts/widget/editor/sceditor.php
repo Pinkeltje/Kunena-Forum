@@ -62,7 +62,7 @@ $this->wa->registerAndUseScript('sceditor', 'components/com_kunena/template/aure
 HTMLHelper::_('bootstrap.tab');
 // Echo $this->subLayout('Widget/Datepicker');
 
-$topictemplate = !$this->config->pickup_category;
+$topictemplate = !$this->config->pickupCategory;
 $this->doc->addScriptOptions('com_kunena.ckeditor_emoticons', json_encode(KunenaParser::getEmoticons(0, 1, 0)));
 $this->doc->addScriptOptions('com_kunena.localstorage', $this->template->params->get('localstorage'));
 ?>
