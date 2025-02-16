@@ -353,6 +353,12 @@ class KunenaTopic extends KunenaDatabaseObject
      * @since   Kunena 6.4
      */
     public $percent;
+    
+    /**
+     * @var     string
+     * @since   Kunena 6.4
+     */
+    public $avatar;    
 
     /**
      * @var     string
